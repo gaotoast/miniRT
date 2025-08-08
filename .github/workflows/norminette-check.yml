@@ -1,0 +1,34 @@
+name: Norminette Check
+run-name: Norminette check for ${{ github.event.pull_request.head.ref }}
+
+on: 
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  norminette:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install Norminette
+        run: pip install norminette
+
+      - name: Run Norminette and save output
+        id: run_norminette
+        run: norminette > norminette_output.txt
+
+      - name: Check for Norminette Errors
+        if: ${{ failure() }}
+        run: |
+          echo "::error::Norminette found errors. Please check the output above."
+          cat norminette_output.txt
+          exit 1
+        continue-on-error: false
