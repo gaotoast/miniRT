@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 13:36:13 by stakada           #+#    #+#             */
-/*   Updated: 2025/08/22 13:38:47 by stakada          ###   ########.fr       */
+/*   Updated: 2025/08/22 13:49:42 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ int	main(int argc, char **argv)
 	void	*mlx_win;
 	t_img	img;
 
-    (void)argc;
-    (void)argv;
+	if (check_args(argc, argv) < 0)
+		return (1);
 	mlx = mlx_init();
 	mlx_win = mlx_new_window(mlx, WIN_WIDTH, WIN_HEIGHT, "Hello world!");
 	img.img = mlx_new_image(mlx, WIN_WIDTH, WIN_HEIGHT);

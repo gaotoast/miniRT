@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   miniRT.h                                           :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/22 13:37:02 by stakada           #+#    #+#             */
-/*   Updated: 2025/08/22 13:52:16 by stakada          ###   ########.fr       */
+/*   Created: 2025/08/22 13:42:37 by stakada           #+#    #+#             */
+/*   Updated: 2025/08/22 14:00:30 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#include "miniRT.h"
 
-# include "libft.h"
-# include "mlx.h"
-# include "struct.h"
-
-# define WIN_WIDTH 1080
-# define WIN_HEIGHT 800
-
-// check
-int		check_args(int argc, char **argv);
-
-// error
-void	print_error(char *msg);
-
-#endif
+void	print_error(char *msg)
+{
+	write(STDERR_FILENO, "Error\n", 6);
+	ft_dprintf(STDERR_FILENO, msg);
+	write(STDERR_FILENO, "\n", 1);
+}
