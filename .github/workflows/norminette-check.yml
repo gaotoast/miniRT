@@ -23,7 +23,7 @@ jobs:
 
       - name: Run Norminette and save output
         id: run_norminette
-        run: norminette > norminette_output.txt
+        run: norminette libft includes srcs > norminette_output.txt
 
       - name: Check for Norminette Errors
         if: ${{ failure() }}
