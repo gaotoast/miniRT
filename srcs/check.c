@@ -19,7 +19,7 @@ int	is_valid_ext(const char *filename)
 	if (!filename)
 		return (0);
 	len = ft_strlen(filename);
-	if (len < 3)
+	if (len < 4)
 		return (0);
 	if (ft_strncmp(filename + len - 3, ".rt", 3) == 0)
 		return (1);
