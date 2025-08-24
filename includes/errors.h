@@ -6,12 +6,12 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 19:42:02 by stakada           #+#    #+#             */
-/*   Updated: 2025/08/24 16:25:15 by stakada          ###   ########.fr       */
+/*   Updated: 2025/08/24 16:32:59 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_H
-# define ERROR_H
+#ifndef ERRORS_H
+# define ERRORS_H
 
 # include "config.h"
 
