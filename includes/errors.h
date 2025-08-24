@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   errors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/22 13:42:37 by stakada           #+#    #+#             */
-/*   Updated: 2025/08/22 22:00:08 by stakada          ###   ########.fr       */
+/*   Created: 2025/08/22 19:42:02 by stakada           #+#    #+#             */
+/*   Updated: 2025/08/24 16:25:15 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#ifndef ERROR_H
+# define ERROR_H
 
-void	print_error(char *msg, ...)
-{
-	va_list	ap;
+# include "config.h"
 
-	va_start(ap, msg);
-	write(STDERR_FILENO, "Error\n", 6);
-	ft_vdprintf(STDERR_FILENO, msg, ap);
-	write(STDERR_FILENO, "\n", 1);
-	va_end(ap);
-}
+# define ERR_MSG_USAGE "Usage: %s scene_file.rt"
+# define ERR_MSG_EXT "File must have a %s extension"
+# define ERR_MSG_FILE "File not found or cannot be accessed"
+
+#endif

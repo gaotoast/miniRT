@@ -6,13 +6,13 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 13:36:21 by stakada           #+#    #+#             */
-/*   Updated: 2025/08/22 13:59:38 by stakada          ###   ########.fr       */
+/*   Updated: 2025/08/24 16:23:31 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-int	is_valid_ext(const char *filename)
+int	is_valid_extension(const char *filename)
 {
 	size_t	len;
 
@@ -21,12 +21,12 @@ int	is_valid_ext(const char *filename)
 	len = ft_strlen(filename);
 	if (len < 4)
 		return (0);
-	if (ft_strncmp(filename + len - 3, ".rt", 3) == 0)
+	if (ft_strncmp(filename + len - 3, EXT, 3) == 0)
 		return (1);
 	return (0);
 }
 
-int	is_exist_file(const char *filename)
+int	is_accessible_file(const char *filename)
 {
 	int	fd;
 
@@ -43,18 +43,18 @@ int	check_args(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		print_error("Usage: ./miniRT scene_file.rt");
+		print_error(ERR_MSG_USAGE, PROGRAM);
 		return (-1);
 	}
 	filename = argv[1];
-	if (!is_valid_ext(filename))
+	if (!is_valid_extension(filename))
 	{
-		print_error("File must have a .rt extension");
+		print_error(ERR_MSG_EXT, EXT);
 		return (-1);
 	}
-	if (!is_exist_file(filename))
+	if (!is_accessible_file(filename))
 	{
-		print_error("File not found or cannot be accessed");
+		print_error(ERR_MSG_FILE);
 		return (-1);
 	}
 	return (0);
