@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   miniRT.h                                           :+:      :+:    :+:   */
+/*   config.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/22 13:37:02 by stakada           #+#    #+#             */
-/*   Updated: 2025/08/24 16:47:25 by stakada          ###   ########.fr       */
+/*   Created: 2025/08/22 21:44:50 by stakada           #+#    #+#             */
+/*   Updated: 2025/08/24 16:21:42 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#ifndef CONFIG_H
+# define CONFIG_H
 
-# include "config.h"
-# include "errors.h"
-# include "libft.h"
-# include "mlx.h"
-# include "struct.h"
-
-// check
-int		check_args(int argc, char **argv);
-
-// error
-void	print_error(char *msg, ...);
+# define WIN_WIDTH 1080
+# define WIN_HEIGHT 800
+# define EXT ".rt"
+# define PROGRAM "./miniRT"
 
 #endif

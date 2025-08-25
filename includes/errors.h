@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   miniRT.h                                           :+:      :+:    :+:   */
+/*   errors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/22 13:37:02 by stakada           #+#    #+#             */
-/*   Updated: 2025/08/24 16:47:25 by stakada          ###   ########.fr       */
+/*   Created: 2025/08/22 19:42:02 by stakada           #+#    #+#             */
+/*   Updated: 2025/08/24 16:34:13 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#ifndef ERRORS_H
+# define ERRORS_H
 
-# include "config.h"
-# include "errors.h"
-# include "libft.h"
-# include "mlx.h"
-# include "struct.h"
-
-// check
-int		check_args(int argc, char **argv);
-
-// error
-void	print_error(char *msg, ...);
+# define ERR_MSG_USAGE "Usage: %s scene_file.rt"
+# define ERR_MSG_EXT "File must have a %s extension"
+# define ERR_MSG_FILE "File not found or cannot be accessed"
 
 #endif

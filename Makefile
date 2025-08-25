@@ -12,28 +12,32 @@ LIBFT			=	libft
 LIBFT_A			=	$(LIBFT).a
 LIBFT_DIR		=	./$(LIBFT)
 
-############################## OS ##############################
-UNAME_S := $(shell uname -s)
-ifeq ($(UNAME_S), Darwin)
-	OS_LIBFT	=	$(LIBFT_DIR)/mac
-	MLX_DIR		=	$(MLX)_macos
-	MLX_A		=	$(MLX_DIR)/libmlx.dylib
-	MLXFLAGS	=	-framework OpenGL -framework AppKit
-else
-	OS_LIBFT	=	$(LIBFT_DIR)/linux
-	MLX_DIR		=	$(MLX)-linux
-	MLX_A		=	$(MLX_DIR)/libmlx_Linux.a
-	MLXFLAGS	=	-lXext -lX11 -lm -lz
-endif
-
 ######################### Directories ##########################
 SRCS_DIR		=	./srcs
 BONUS_DIR		=	$(SRCS_DIR)/bonus
 
 OBJS_DIR		=	./objs
 
+############################## OS ##############################
+UNAME_S := $(shell uname -s)
+ifeq ($(UNAME_S), Darwin)
+	OS_DIR		=	$(SRCS_DIR)/mac
+	OS_LIBFT	=	$(LIBFT_DIR)/mac
+	MLX_DIR		=	$(MLX)_macos
+	MLX_A		=	$(MLX_DIR)/libmlx.dylib
+	MLXFLAGS	=	-framework OpenGL -framework AppKit
+else
+	OS_DIR		=	$(SRCS_DIR)/linux
+	OS_LIBFT	=	$(LIBFT_DIR)/linux
+	MLX_DIR		=	$(MLX)-linux
+	MLX_A		=	$(MLX_DIR)/libmlx_Linux.a
+	MLXFLAGS	=	-lXext -lX11 -lm -lz
+endif
+
 ########################### Sources ############################
+OS_SRCS			=	$(wildcard $(OS_DIR)/*.c)
 SRCS			=	$(wildcard $(SRCS_DIR)/*.c)
+SRCS			+=	$(OS_SRCS)
 BONUS_SRCS		=	$(wildcard $(BONUS_DIR)/*.c)
 
 ########################### Objects ############################

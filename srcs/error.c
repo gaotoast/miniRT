@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   miniRT.h                                           :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/22 13:37:02 by stakada           #+#    #+#             */
-/*   Updated: 2025/08/24 16:47:25 by stakada          ###   ########.fr       */
+/*   Created: 2025/08/22 13:42:37 by stakada           #+#    #+#             */
+/*   Updated: 2025/08/22 22:00:08 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#include "miniRT.h"
 
-# include "config.h"
-# include "errors.h"
-# include "libft.h"
-# include "mlx.h"
-# include "struct.h"
+void	print_error(char *msg, ...)
+{
+	va_list	ap;
 
-// check
-int		check_args(int argc, char **argv);
-
-// error
-void	print_error(char *msg, ...);
-
-#endif
+	va_start(ap, msg);
+	write(STDERR_FILENO, "Error\n", 6);
+	ft_vdprintf(STDERR_FILENO, msg, ap);
+	write(STDERR_FILENO, "\n", 1);
+	va_end(ap);
+}
