@@ -37,8 +37,7 @@ endif
 ########################### Sources ############################
 OS_SRCS			=	$(wildcard $(OS_DIR)/*.c)
 SRCS			=	$(wildcard $(SRCS_DIR)/*.c)
-SRCS			+=	$(wildcard $(SRCS_DIR)/parsing/*.c)
-SRCS			+=	$(wildcard $(SRCS_DIR)/utils/*.c)
+SRCS			+=	$(wildcard $(SRCS_DIR)/**/*.c)
 SRCS			+=	$(OS_SRCS)
 BONUS_SRCS		=	$(wildcard $(BONUS_DIR)/*.c)
 
