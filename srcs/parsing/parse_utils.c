@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 13:13:12 by stakada           #+#    #+#             */
-/*   Updated: 2025/08/28 21:21:29 by stakada          ###   ########.fr       */
+/*   Updated: 2025/08/28 21:41:20 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,38 +25,42 @@ int	get_double(char *str, double *n)
 	return (0);
 }
 
+static int	parse_tokens_and_assign(char *str, double *a, double *b, double *c)
+{
+	char	*comma1;
+	char	*comma2;
+
+	if (!str)
+		return (-1);
+	comma1 = str;
+	while (*comma1 && *comma1 != ',')
+		comma1++;
+	if (*comma1 != ',')
+		return (-1);
+	*comma1 = '\0';
+	comma2 = comma1 + 1;
+	while (*comma2 && *comma2 != ',')
+		comma2++;
+	if (*comma2 != ',')
+		return (-1);
+	*comma2 = '\0';
+	if (get_double(str, a) < 0 || get_double(comma1 + 1, b) < 0
+		|| get_double(comma2 + 1, c) < 0)
+		return (-1);
+	return (0);
+}
+
 int	parse_colors(char *str, t_color *color)
 {
-	char	**tokens;
-
-	tokens = ft_split(str, ',');
-	if (!tokens)
+	if (!str || !color)
 		return (-1);
-	if (get_double(tokens[0], &(color->r)) < 0 || get_double(tokens[1],
-			&(color->g)) < 0 || get_double(tokens[2], &(color->b)) < 0)
-	{
-		free_2d_array(tokens);
-		return (-1);
-	}
-	free_2d_array(tokens);
-	return (0);
+	return (parse_tokens_and_assign(str, &(color->r), &(color->g),
+			&(color->b)));
 }
 
 int	parse_vec3(char *str, t_vec3 *vec)
 {
-	char	**tokens;
-
 	if (!str || !vec)
 		return (-1);
-	tokens = ft_split(str, ',');
-	if (!tokens)
-		return (-1);
-	if (get_double(tokens[0], &(vec->x)) < 0 || get_double(tokens[1],
-			&(vec->y)) < 0 || get_double(tokens[2], &(vec->z)) < 0)
-	{
-		free_2d_array(tokens);
-		return (-1);
-	}
-	free_2d_array(tokens);
-	return (0);
+	return (parse_tokens_and_assign(str, &(vec->x), &(vec->y), &(vec->z)));
 }
