@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 13:29:46 by stakada           #+#    #+#             */
-/*   Updated: 2025/08/28 21:17:02 by stakada          ###   ########.fr       */
+/*   Updated: 2025/08/28 22:23:58 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,11 @@ int	parse_camera(char **elems, t_camera *camera, int *read_flags)
 	err_msg = check_camera_format(elems, camera, *read_flags);
 	if (!err_msg)
 		err_msg = check_camera_values(*camera);
-	if (!validate_elements(err_msg, IDENT_C))
+	if (err_msg)
+	{
+		print_error(err_msg, IDENT_C);
 		return (-1);
+	}
 	*read_flags |= FLAG_C;
 	return (0);
 }

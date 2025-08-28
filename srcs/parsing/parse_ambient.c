@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 15:02:48 by stakada           #+#    #+#             */
-/*   Updated: 2025/08/28 21:08:26 by stakada          ###   ########.fr       */
+/*   Updated: 2025/08/28 22:23:35 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,11 @@ int	parse_ambient(char **elems, t_ambient *ambient, int *read_flags)
 	err_msg = check_ambient_format(elems, ambient, *read_flags);
 	if (!err_msg)
 		err_msg = check_ambient_values(*ambient);
-	if (!validate_elements(err_msg, IDENT_A))
+	if (err_msg)
+	{
+		print_error(err_msg, IDENT_A);
 		return (-1);
+	}
 	*read_flags |= FLAG_A;
 	return (0);
 }

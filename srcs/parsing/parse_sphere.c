@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 14:09:37 by stakada           #+#    #+#             */
-/*   Updated: 2025/08/28 21:20:43 by stakada          ###   ########.fr       */
+/*   Updated: 2025/08/28 22:25:34 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,9 @@ int	parse_sphere(char **elems, t_object **objects, int *read_flags)
 	err_msg = check_sphere_format(elems, sphere);
 	if (!err_msg)
 		err_msg = check_sphere_values(*sphere);
-	if (!validate_elements(err_msg, IDENT_SP))
+	if (err_msg)
 	{
+		print_error(err_msg, IDENT_SP);
 		free(sphere);
 		return (-1);
 	}

@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 20:29:06 by stakada           #+#    #+#             */
-/*   Updated: 2025/08/28 21:03:39 by stakada          ###   ########.fr       */
+/*   Updated: 2025/08/28 22:22:30 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,6 @@ int	validate_scene(int read_flags)
 	if (!(read_flags & (FLAG_SP | FLAG_PL | FLAG_CY)))
 	{
 		print_error(ERR_MSG_NO_OBJECTS);
-		return (INVALID);
-	}
-	return (VALID);
-}
-
-int	validate_elements(char *err_msg, char *identifier)
-{
-	if (err_msg)
-	{
-		print_error(err_msg, identifier);
 		return (INVALID);
 	}
 	return (VALID);
