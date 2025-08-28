@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 13:37:02 by stakada           #+#    #+#             */
-/*   Updated: 2025/08/28 21:07:24 by stakada          ###   ########.fr       */
+/*   Updated: 2025/08/28 22:14:52 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,11 @@ void	free_2d_array(char **array);
 void	free_scene(t_scene *scene);
 void	free_ctx(t_ctx *ctx);
 
+// TODO: delete debug statement
 // debug
-void	debug_scene(t_scene *scene);
+void	print_scene(t_scene *scene);
+void	print_objects(t_object *objects);
+void	print_vec3(const char *prefix, t_vec3 vec);
+void	print_color(const char *prefix, t_color color);
 
 #endif

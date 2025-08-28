@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   print_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/27 19:26:43 by stakada           #+#    #+#             */
-/*   Updated: 2025/08/28 22:13:38 by stakada          ###   ########.fr       */
+/*   Created: 2025/08/28 22:11:37 by stakada           #+#    #+#             */
+/*   Updated: 2025/08/28 22:15:04 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-// TODO: delete debug statement
-t_ctx	*init(char *filename)
+void	print_vec3(const char *prefix, t_vec3 vec)
 {
-	t_ctx	*ctx;
+	printf("%s: (%.2f, %.2f, %.2f)\n", prefix, vec.x, vec.y, vec.z);
+}
 
-	ctx = (t_ctx *)ft_calloc(1, sizeof(t_ctx));
-	if (!ctx)
-		return (NULL);
-	ctx->scene = parse_scene(filename);
-	if (!ctx->scene)
-	{
-		free(ctx);
-		return (NULL);
-	}
-    print_scene(ctx->scene);
-	return (ctx);
+void	print_color(const char *prefix, t_color color)
+{
+	printf("%s: (%.2f, %.2f, %.2f)\n", prefix, color.r, color.g, color.b);
 }
