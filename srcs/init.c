@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 19:26:43 by stakada           #+#    #+#             */
-/*   Updated: 2025/08/28 22:13:38 by stakada          ###   ########.fr       */
+/*   Updated: 2025/08/28 22:19:50 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ t_ctx	*init(char *filename)
 		free(ctx);
 		return (NULL);
 	}
-    print_scene(ctx->scene);
+	print_scene(ctx->scene);
 	return (ctx);
 }
