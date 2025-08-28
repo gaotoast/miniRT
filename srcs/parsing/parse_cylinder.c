@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 15:53:26 by stakada           #+#    #+#             */
-/*   Updated: 2025/08/28 17:04:36 by stakada          ###   ########.fr       */
+/*   Updated: 2025/08/28 17:59:54 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 
 static char	*check_cylinder_values(t_cylinder cylinder)
 {
+	if (cylinder.diameter <= 0.0)
+		return (ERR_MSG_ELEM_VALUE);
+	if (cylinder.height <= 0.0)
+		return (ERR_MSG_ELEM_VALUE);
+	if (!validate_colors(cylinder.color))
+		return (ERR_MSG_ELEM_VALUE);
 	return (NULL);
 }
 
@@ -22,15 +28,15 @@ static char	*check_cylinder_format(char **elems, t_cylinder *cylinder)
 	if (count_array(elems) != 5)
 		return (ERR_MSG_ELEM_COUNT);
 	if (parse_vec3(elems[0], &(cylinder->center)) < 0)
-		return ("");
+		return (ERR_MSG_ELEM_FORMAT);
 	if (parse_vec3(elems[1], &(cylinder->axis)) < 0)
-		return ("");
+		return (ERR_MSG_ELEM_FORMAT);
 	if (get_double(elems[2], &(cylinder->diameter)) < 0)
-		return ("");
+		return (ERR_MSG_ELEM_FORMAT);
 	if (get_double(elems[3], &(cylinder->height)) < 0)
-		return ("");
+		return (ERR_MSG_ELEM_FORMAT);
 	if (parse_colors(elems[4], &(cylinder->color)) < 0)
-		return ("");
+		return (ERR_MSG_ELEM_FORMAT);
 	return (NULL);
 }
 

@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 20:29:06 by stakada           #+#    #+#             */
-/*   Updated: 2025/08/28 16:41:29 by stakada          ###   ########.fr       */
+/*   Updated: 2025/08/28 17:51:21 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ int	validate_elements(char *err_msg, char *identifier)
 	if (err_msg)
 	{
 		print_error(err_msg, identifier);
-		return (VALID);
+		return (INVALID);
 	}
-	return (INVALID);
+	return (VALID);
 }
 
 int	validate_double(double n, double min, double max)

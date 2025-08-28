@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 15:02:48 by stakada           #+#    #+#             */
-/*   Updated: 2025/08/28 17:07:06 by stakada          ###   ########.fr       */
+/*   Updated: 2025/08/28 17:59:42 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 static char	*check_ambient_values(t_ambient ambient)
 {
 	if (!validate_double(ambient.ratio, 0.0, 1.0))
-		return (ERR_MSG_RANGE);
+		return (ERR_MSG_ELEM_VALUE);
 	if (!validate_colors(ambient.color))
-		return (ERR_MSG_COLORS);
+		return (ERR_MSG_ELEM_VALUE);
 	return (NULL);
 }
 
@@ -29,9 +29,9 @@ static char	*check_ambient_format(char **elems, t_ambient *ambient,
 	if (count_array(elems) != 2)
 		return (ERR_MSG_ELEM_COUNT);
 	if (get_double(elems[0], &(ambient->ratio)) < 0)
-		return (ERR_MSG_RATIO);
+		return (ERR_MSG_ELEM_FORMAT);
 	if (parse_colors(elems[1], &(ambient->color)) < 0)
-		return (ERR_MSG_COLORS);
+		return (ERR_MSG_ELEM_FORMAT);
 	return (NULL);
 }
 

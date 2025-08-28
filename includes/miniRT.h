@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 13:37:02 by stakada           #+#    #+#             */
-/*   Updated: 2025/08/28 17:04:09 by stakada          ###   ########.fr       */
+/*   Updated: 2025/08/28 17:55:27 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include "libft.h"
 # include "mlx.h"
 # include "struct.h"
+# include <math.h>
+# include <stdlib.h>
 
 // check
 int		check_args(int argc, char **argv);
@@ -48,9 +50,15 @@ int		register_object(t_object **objects, t_obj_type type, void *obj);
 
 // utils
 int		count_array(char **array);
+double	ft_strtod(const char *nptr, char **endptr);
 
 // error
 void	print_error(char *msg, ...);
+
+// free
+void	free_2d_array(char **array);
+void	free_scene(t_scene *scene);
+void	free_ctx(t_ctx *ctx);
 
 // debug
 void	debug_scene(t_scene *scene);

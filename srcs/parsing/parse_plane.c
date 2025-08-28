@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 15:47:17 by stakada           #+#    #+#             */
-/*   Updated: 2025/08/28 16:59:34 by stakada          ###   ########.fr       */
+/*   Updated: 2025/08/28 17:46:25 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 static char	*check_plane_values(t_plane plane)
 {
 	if (!validate_vec3(plane.normal, 0.0, 1.0))
-		return (ERR_MSG_NORM_VEC);
-	if (!validate_color(plane.color))
-		return (ERR_MSG_COLORS);
+		return (ERR_MSG_ELEM_VALUE);
+	if (!validate_colors(plane.color))
+		return (ERR_MSG_ELEM_VALUE);
 	return (NULL);
 }
 
@@ -26,11 +26,11 @@ static char	*check_plane_format(char **elems, t_plane *plane)
 	if (count_array(elems) != 3)
 		return (ERR_MSG_ELEM_COUNT);
 	if (parse_vec3(elems[0], &(plane->point)) < 0)
-		return (ERR_MSG_VEC_FORMAT);
-	if (parse_ve3(elems[1], &(plane->normal)) < 0)
-		return (ERR_MSG_VEC_FORMAT);
+		return (ERR_MSG_ELEM_FORMAT);
+	if (parse_vec3(elems[1], &(plane->normal)) < 0)
+		return (ERR_MSG_ELEM_FORMAT);
 	if (parse_colors(elems[2], &(plane->color)) < 0)
-		return (ERR_MSG_COLORS);
+		return (ERR_MSG_ELEM_FORMAT);
 	return (NULL);
 }
 
