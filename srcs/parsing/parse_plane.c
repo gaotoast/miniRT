@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 15:47:17 by stakada           #+#    #+#             */
-/*   Updated: 2025/08/28 22:25:37 by stakada          ###   ########.fr       */
+/*   Updated: 2025/08/28 22:30:04 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static char	*check_plane_values(t_plane plane)
 {
-	if (!validate_vec3(plane.normal, 0.0, 1.0))
+	if (!validate_vec3(plane.normal, -1.0, 1.0))
 		return (ERR_MSG_ELEM_VALUE);
 	if (!validate_colors(plane.color))
 		return (ERR_MSG_ELEM_VALUE);

@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 14:09:37 by stakada           #+#    #+#             */
-/*   Updated: 2025/08/28 22:25:34 by stakada          ###   ########.fr       */
+/*   Updated: 2025/08/28 22:31:27 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 static char	*check_sphere_values(t_sphere sphere)
 {
+	if (sphere.diameter <= 0.0)
+		return (ERR_MSG_ELEM_VALUE);
 	if (!validate_colors(sphere.color))
 		return (ERR_MSG_ELEM_VALUE);
 	return (NULL);

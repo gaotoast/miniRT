@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 15:53:26 by stakada           #+#    #+#             */
-/*   Updated: 2025/08/28 22:24:30 by stakada          ###   ########.fr       */
+/*   Updated: 2025/08/28 22:31:05 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 static char	*check_cylinder_values(t_cylinder cylinder)
 {
+	if (!validate_vec3(cylinder.axis, -1.0, 1.0))
+		return (ERR_MSG_ELEM_VALUE);
 	if (cylinder.diameter <= 0.0)
 		return (ERR_MSG_ELEM_VALUE);
 	if (cylinder.height <= 0.0)
