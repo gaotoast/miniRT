@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 13:37:02 by stakada           #+#    #+#             */
-/*   Updated: 2025/08/28 22:14:52 by stakada          ###   ########.fr       */
+/*   Updated: 2025/08/28 22:26:29 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ int		is_valid_num(const char *str);
 int		is_valid_csv(const char *str);
 
 int		validate_scene(int read_flags);
-int		validate_elements(char *err_msg, char *identifier);
 int		validate_double(double n, double min, double max);
 int		validate_colors(t_color color);
 int		validate_vec3(t_vec3 vec, double min, double max);
