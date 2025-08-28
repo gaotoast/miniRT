@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 15:47:17 by stakada           #+#    #+#             */
-/*   Updated: 2025/08/28 17:46:25 by stakada          ###   ########.fr       */
+/*   Updated: 2025/08/28 21:20:24 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ static char	*check_plane_format(char **elems, t_plane *plane)
 {
 	if (count_array(elems) != 3)
 		return (ERR_MSG_ELEM_COUNT);
-	if (parse_vec3(elems[0], &(plane->point)) < 0)
+	if (!is_valid_csv(elems[0]) || parse_vec3(elems[0], &(plane->point)) < 0)
 		return (ERR_MSG_ELEM_FORMAT);
-	if (parse_vec3(elems[1], &(plane->normal)) < 0)
+	if (!is_valid_csv(elems[1]) || parse_vec3(elems[1], &(plane->normal)) < 0)
 		return (ERR_MSG_ELEM_FORMAT);
-	if (parse_colors(elems[2], &(plane->color)) < 0)
+	if (!is_valid_csv(elems[2]) || parse_colors(elems[2], &(plane->color)) < 0)
 		return (ERR_MSG_ELEM_FORMAT);
 	return (NULL);
 }

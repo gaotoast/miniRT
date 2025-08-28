@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate.c                                         :+:      :+:    :+:   */
+/*   validate_scene.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 20:29:06 by stakada           #+#    #+#             */
-/*   Updated: 2025/08/28 17:51:21 by stakada          ###   ########.fr       */
+/*   Updated: 2025/08/28 21:03:39 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,34 +42,5 @@ int	validate_elements(char *err_msg, char *identifier)
 		print_error(err_msg, identifier);
 		return (INVALID);
 	}
-	return (VALID);
-}
-
-int	validate_double(double n, double min, double max)
-{
-	if (n < min || n > max)
-		return (INVALID);
-	return (VALID);
-}
-
-int	validate_colors(t_color color)
-{
-	if (!(color.r >= 0 && color.r <= 255))
-		return (INVALID);
-	if (!(color.g >= 0 && color.g <= 255))
-		return (INVALID);
-	if (!(color.b >= 0 && color.b <= 255))
-		return (INVALID);
-	return (VALID);
-}
-
-int	validate_vec3(t_vec3 vec, double min, double max)
-{
-	if (vec.x < min || vec.x > max)
-		return (INVALID);
-	if (vec.y < min || vec.y > max)
-		return (INVALID);
-	if (vec.z < min || vec.z > max)
-		return (INVALID);
 	return (VALID);
 }

@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 12:49:25 by stakada           #+#    #+#             */
-/*   Updated: 2025/08/28 13:09:12 by stakada          ###   ########.fr       */
+/*   Updated: 2025/08/28 20:47:03 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,17 @@ static double	get_fractional_part(const char **s)
 	return (result);
 }
 
+static int	is_valid_number_start(const char *s)
+{
+	if (*s == '+' || *s == '-')
+		return (0);
+	if (*s == '.' && !ft_isdigit(*(s + 1)))
+		return (0);
+	if (!ft_isdigit(*s) && *s != '.')
+		return (0);
+	return (1);
+}
+
 static int	check_valid_format(const char **nptr, double *sign)
 {
 	const char	*start;
@@ -61,7 +72,7 @@ static int	check_valid_format(const char **nptr, double *sign)
 			*sign = -(*sign);
 		(*nptr)++;
 	}
-	if (**nptr == '.' && !ft_isdigit(*(*nptr + 1)))
+	if (!is_valid_number_start(*nptr))
 	{
 		*nptr = start;
 		return (0);

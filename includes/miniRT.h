@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 13:37:02 by stakada           #+#    #+#             */
-/*   Updated: 2025/08/28 17:55:27 by stakada          ###   ########.fr       */
+/*   Updated: 2025/08/28 21:07:24 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@ int		parse_cylinder(char **elems, t_object **objects, int *read_flags);
 int		get_double(char *str, double *n);
 int		parse_colors(char *str, t_color *color);
 int		parse_vec3(char *str, t_vec3 *vec);
+
+int		is_valid_num(const char *str);
+int		is_valid_csv(const char *str);
 
 int		validate_scene(int read_flags);
 int		validate_elements(char *err_msg, char *identifier);

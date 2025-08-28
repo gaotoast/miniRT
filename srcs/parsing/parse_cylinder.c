@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 15:53:26 by stakada           #+#    #+#             */
-/*   Updated: 2025/08/28 17:59:54 by stakada          ###   ########.fr       */
+/*   Updated: 2025/08/28 21:18:39 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,19 @@ static char	*check_cylinder_format(char **elems, t_cylinder *cylinder)
 {
 	if (count_array(elems) != 5)
 		return (ERR_MSG_ELEM_COUNT);
-	if (parse_vec3(elems[0], &(cylinder->center)) < 0)
+	if (!is_valid_csv(elems[0]) || parse_vec3(elems[0],
+			&(cylinder->center)) < 0)
 		return (ERR_MSG_ELEM_FORMAT);
-	if (parse_vec3(elems[1], &(cylinder->axis)) < 0)
+	if (!is_valid_csv(elems[1]) || parse_vec3(elems[1], &(cylinder->axis)) < 0)
 		return (ERR_MSG_ELEM_FORMAT);
-	if (get_double(elems[2], &(cylinder->diameter)) < 0)
+	if (!is_valid_num(elems[2]) || get_double(elems[2],
+			&(cylinder->diameter)) < 0)
 		return (ERR_MSG_ELEM_FORMAT);
-	if (get_double(elems[3], &(cylinder->height)) < 0)
+	if (!is_valid_num(elems[3]) || get_double(elems[3],
+			&(cylinder->height)) < 0)
 		return (ERR_MSG_ELEM_FORMAT);
-	if (parse_colors(elems[4], &(cylinder->color)) < 0)
+	if (!is_valid_csv(elems[4]) || parse_colors(elems[4],
+			&(cylinder->color)) < 0)
 		return (ERR_MSG_ELEM_FORMAT);
 	return (NULL);
 }

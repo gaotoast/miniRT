@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 13:29:46 by stakada           #+#    #+#             */
-/*   Updated: 2025/08/28 17:41:07 by stakada          ###   ########.fr       */
+/*   Updated: 2025/08/28 21:17:02 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,13 @@ static char	*check_camera_format(char **elems, t_camera *camera, int read_flags)
 		return (ERR_MSG_DUP_IDENT);
 	if (count_array(elems) != 3)
 		return (ERR_MSG_ELEM_COUNT);
-	if (parse_vec3(elems[0], &(camera->position)) < 0)
+	if (!is_valid_csv(elems[0]) || parse_vec3(elems[0],
+			&(camera->position)) < 0)
 		return (ERR_MSG_ELEM_FORMAT);
-	if (parse_vec3(elems[1], &(camera->direction)) < 0)
+	if (!is_valid_csv(elems[1]) || parse_vec3(elems[1],
+			&(camera->direction)) < 0)
 		return (ERR_MSG_ELEM_FORMAT);
-	if (get_double(elems[2], &(camera->fov)) < 0)
+	if (!is_valid_num(elems[2]) || get_double(elems[2], &(camera->fov)) < 0)
 		return (ERR_MSG_ELEM_FORMAT);
 	return (NULL);
 }
