@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   count_array.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/22 13:36:13 by stakada           #+#    #+#             */
-/*   Updated: 2025/08/28 16:12:54 by stakada          ###   ########.fr       */
+/*   Created: 2025/08/27 20:45:18 by stakada           #+#    #+#             */
+/*   Updated: 2025/08/28 13:09:46 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-int	main(int argc, char **argv)
+int	count_array(char **array)
 {
-	t_ctx	*ctx;
+	int	cnt;
 
-	if (check_args(argc, argv) < 0)
-		return (1);
-	ctx = init(argv[1]);
-	if (!ctx)
-		return (1);
-	return (0);
+	if (!array)
+		return (0);
+	cnt = 0;
+	while (array[cnt])
+		cnt++;
+	return (cnt);
 }
