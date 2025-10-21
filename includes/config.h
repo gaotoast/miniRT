@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 21:44:50 by stakada           #+#    #+#             */
-/*   Updated: 2025/08/28 13:30:36 by stakada          ###   ########.fr       */
+/*   Updated: 2025/10/20 12:42:01 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,13 @@
 # define WIN_HEIGHT 800
 # define EXT ".rt"
 # define PROGRAM "./miniRT"
+
+# if defined(__APPLE__)
+#  define ESC_KEY 53
+# else
+#  include <X11/keysym.h>
+#  define ESC_KEY XK_Escape
+# endif
 
 # define VALID 1
 # define INVALID 0
