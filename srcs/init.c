@@ -6,14 +6,14 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 19:26:43 by stakada           #+#    #+#             */
-/*   Updated: 2025/08/28 22:19:50 by stakada          ###   ########.fr       */
+/*   Updated: 2025/10/20 12:17:52 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
 // TODO: delete debug statement
-t_ctx	*init(char *filename)
+t_ctx	*init_ctx(char *filename)
 {
 	t_ctx	*ctx;
 

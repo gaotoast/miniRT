@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 19:17:57 by stakada           #+#    #+#             */
-/*   Updated: 2025/08/28 16:51:48 by stakada          ###   ########.fr       */
+/*   Updated: 2025/10/20 12:14:15 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,22 +45,13 @@ void	free_scene(t_scene *scene)
 	}
 }
 
-void	free_img(t_img *img)
-{
-	if (img->img)
-		free(img->img);
-	if (img->addr)
-		free(img->addr);
-}
-
 void	free_ctx(t_ctx *ctx)
 {
-	if (ctx->mlx)
-		free(ctx->mlx);
-	if (ctx->win)
-		free(ctx->win);
+	if (!ctx)
+		return ;
 	if (ctx->img)
-		free_img(ctx->img);
+		free(ctx->img);
 	if (ctx->scene)
 		free_scene(ctx->scene);
+	free(ctx);
 }
