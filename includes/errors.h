@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 19:42:02 by stakada           #+#    #+#             */
-/*   Updated: 2025/08/28 17:39:52 by stakada          ###   ########.fr       */
+/*   Updated: 2025/10/21 12:38:46 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,8 @@
 # define ERR_MSG_MISSING_CAMERA "Missing camera (C)"
 # define ERR_MSG_MISSING_LIGHT "Missing light (L)"
 # define ERR_MSG_NO_OBJECTS "Scene must contain at least one object"
+
+/* System/Runtime errors */
+# define ERR_MSG_MALLOC "Memory allocation failed"
 
 #endif

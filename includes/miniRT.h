@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 13:37:02 by stakada           #+#    #+#             */
-/*   Updated: 2025/08/28 22:26:29 by stakada          ###   ########.fr       */
+/*   Updated: 2025/10/21 12:35:30 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 int		check_args(int argc, char **argv);
 
 // init
-t_ctx	*init(char *filename);
+t_ctx	*init_ctx(char *filename);
 
 // parsing
 t_scene	*parse_scene(char *filename);
@@ -49,6 +49,10 @@ int		validate_colors(t_color color);
 int		validate_vec3(t_vec3 vec, double min, double max);
 
 int		register_object(t_object **objects, t_obj_type type, void *obj);
+
+// mlx
+void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
+void	run_mlx(t_ctx *ctx);
 
 // utils
 int		count_array(char **array);
