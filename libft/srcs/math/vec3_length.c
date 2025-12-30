@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_abs.c                                           :+:      :+:    :+:   */
+/*   vec3_length.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kinamura <kinamura@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/10 12:05:29 by kinamura          #+#    #+#             */
-/*   Updated: 2025/12/27 17:49:55 by kinamura         ###   ########.fr       */
+/*   Created: 2025/12/29 10:54:33 by kinamura          #+#    #+#             */
+/*   Updated: 2025/12/29 11:02:59 by kinamura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_math.h"
 
-int	ft_abs(int i)
+double	vec3_length(t_vec3 v)
 {
-	if (i < 0)
-		return (-i);
-	return (i);
+	double	ret;
+
+	ret = vec3_dot(v, v);
+	ret = sqrt(ret);
+	return (ret);
 }

@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_abs.c                                           :+:      :+:    :+:   */
+/*   vec3_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kinamura <kinamura@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/10 12:05:29 by kinamura          #+#    #+#             */
-/*   Updated: 2025/12/27 17:49:55 by kinamura         ###   ########.fr       */
+/*   Created: 2025/12/29 11:09:22 by kinamura          #+#    #+#             */
+/*   Updated: 2025/12/29 11:13:24 by kinamura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_math.h"
 
-int	ft_abs(int i)
+t_vec3	*vec3_init(t_vec3 *new, double x, double y, double z)
 {
-	if (i < 0)
-		return (-i);
-	return (i);
+	if (!new)
+	{
+		new = vec3_alloc();
+		if (!new)
+			return (NULL);
+	}
+	new->x = x;
+	new->y = y;
+	new->z = z;
+	return (new);
 }

@@ -3,35 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*   By: kinamura <kinamura@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 13:36:57 by stakada           #+#    #+#             */
-/*   Updated: 2025/08/28 16:10:33 by stakada          ###   ########.fr       */
+/*   Updated: 2025/12/30 16:47:33 by kinamura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
-
-/**
- * @brief Represents a 3D vector for coordinates, directions, etc.
- */
-typedef struct s_vec3
-{
-	double			x;
-	double			y;
-	double			z;
-}					t_vec3;
-
-/**
- * @brief Represents a color using RGB values, ranging from 0.0 to 1.0.
- */
-typedef struct s_color
-{
-	double			r;
-	double			g;
-	double			b;
-}					t_color;
 
 /**
  * @brief Defines the ambient light in the scene.

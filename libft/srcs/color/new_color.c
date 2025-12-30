@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_abs.c                                           :+:      :+:    :+:   */
+/*   new_color.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kinamura <kinamura@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/10 12:05:29 by kinamura          #+#    #+#             */
-/*   Updated: 2025/12/27 17:49:55 by kinamura         ###   ########.fr       */
+/*   Created: 2025/12/29 16:40:18 by kinamura          #+#    #+#             */
+/*   Updated: 2025/12/29 17:23:26 by kinamura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_math.h"
+#include "libft.h"
 
-int	ft_abs(int i)
+t_color	*new_color(t_color *new, int color)
 {
-	if (i < 0)
-		return (-i);
-	return (i);
+	if (!new)
+	{
+		new = alloc_color();
+		if (!new)
+			return (NULL);
+	}
+	init_color(new, color);
+	return (new);
 }

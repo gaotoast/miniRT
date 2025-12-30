@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_abs.c                                           :+:      :+:    :+:   */
+/*   vec3_normalize.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kinamura <kinamura@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/10 12:05:29 by kinamura          #+#    #+#             */
-/*   Updated: 2025/12/27 17:49:55 by kinamura         ###   ########.fr       */
+/*   Created: 2025/12/29 11:11:06 by kinamura          #+#    #+#             */
+/*   Updated: 2025/12/29 11:11:09 by kinamura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_math.h"
 
-int	ft_abs(int i)
+t_vec3	vec3_normalize(t_vec3 v)
 {
-	if (i < 0)
-		return (-i);
-	return (i);
+	double	length;
+
+	length = vec3_length(v);
+	if (length == 0.0)
+		return (vec3(0.0, 0.0, 0.0));
+	return (vec3_mul(v, 1.0 / length));
 }
