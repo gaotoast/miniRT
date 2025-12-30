@@ -49,42 +49,48 @@ BONUS_OBJS		=	$(BONUS_SRCS:$(BONUS_DIR)/%.c=$(OBJS_DIR)/bonus/%.o)
 INCLUDES		=	-I ./includes -I $(LIBFT_DIR)/includes -I $(OS_LIBFT)/includes
 INCLUDES		+=	-I $(MLX_DIR)
 
-############################ UI/UX #############################
-RESET			=	\033[0m
-BOLD			=	\033[1m
-YELLOW			=	\033[93m
-LIGHT_BLUE		=	\033[94m
-MAKEFLAGS		+=	--no-print-directory
-
+######################### UI/UX #########################
 ### Progress Bar
-COMPILED	:=	0
-TOTAL_FILES	:=	$(words $(OBJS))
+WIDTH		:=	$(shell tput cols)
+BAR_WIDTH	:=	$(shell echo $$(($(WIDTH) - 20)))
 
-define progress
-	@$(eval COMPILED := $(shell echo $$(($(COMPILED) + 1))))
-	@CURRENT_PERCENT=$$(($(COMPILED) * 100 / $(TOTAL_FILES))); \
-	printf "\033[K$(YELLOW)[%3d%%] Compiling: $<$(RESET)\r" $$CURRENT_PERCENT
+TOTAL		:=	$(words $(OBJS))
+CURRENT		:=	0
+define show_progress
+	$(eval CURRENT=$(shell echo $$(($(CURRENT)+1))))
+	@if [ $(CURRENT) -eq 1 ]; then \
+		printf "Compiling sources for $(NAME)...\n"; \
+	fi
+	@printf "\r["
+	@for i in $$(seq 1 $(BAR_WIDTH)); do \
+		if [ $$i -le $$(($(CURRENT) * $(BAR_WIDTH) / $(TOTAL))) ]; then \
+			printf "="; \
+		else \
+			printf " "; \
+		fi; \
+	done
+	@printf "] $(CURRENT)/$(TOTAL) ($$(($(CURRENT) * 100 / $(TOTAL)))%%)"
 endef
 
 ########################### Targets ############################
 all: $(NAME)
 
 $(NAME): $(LIBFT_A) $(MLX_A) $(OBJS)
-	@printf "\033[K$(BOLD)$(LIGHT_BLUE)Compiling $(NAME)...$(RESET)"
+	@echo "\033[KCompiling $(NAME)..."
 	@$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_DIR) -lft -L$(MLX_DIR) -lmlx $(MLXFLAGS) -o $(NAME)
-	@printf "\r\033[K$(BOLD)$(LIGHT_BLUE)$(NAME) created successfully!$(RESET)\n"
+	@echo "\r\033[K$(NAME) created successfully!\n"
 
 $(LIBFT_A):
 	@$(MAKE) -C $(LIBFT_DIR)
 
 $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c | $(OBJS_DIR)
 	@mkdir -p $(dir $@)
-	@$(progress)
+	$(show_progress)
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 $(OBJS_DIR)/bonus/%.o: $(BONUS_DIR)/%.c | $(OBJS_DIR)/bonus
 	@mkdir -p $(dir $@)
-	@$(progress)
+	$(show_progress)
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 $(OBJS_DIR):
@@ -94,28 +100,28 @@ $(OBJS_DIR)/bonus:
 	@mkdir -p $(OBJS_DIR)/bonus
 
 $(MLX_A):
-	@echo "$(BOLD)$(LIGHT_BLUE)Create $(MLX)...$(RESET)"
+	@echo "Create $(MLX)..."
 	@$(MAKE) -j1 -C $(MLX_DIR)
 
 clean:
-	@printf "\033[K$(BOLD)$(LIGHT_BLUE)Cleaning object files...$(RESET)\n"
+	@echo "\033[KCleaning object files...\n"
 	@$(MAKE) clean -C $(LIBFT_DIR)
 	@$(RM) $(OBJS) $(BONUS_OBJS) $(OBJS_DIR)
-	@printf "\r\033[K$(BOLD)$(LIGHT_BLUE)Objects cleaned!$(RESET)\n"
+	@echo "\r\033[KObjects cleaned!\n"
 
 fclean:
-	@printf "\033[K$(BOLD)$(LIGHT_BLUE)Removing $(NAME)...$(RESET)\n"
+	@echo "\033[KRemoving $(NAME)...\n"
 	@$(MAKE) fclean -C $(LIBFT_DIR)
 	@$(MAKE) clean -C $(MLX_DIR)
 	@$(RM) $(OBJS) $(BONUS_OBJS) $(OBJS_DIR) $(NAME) $(BONUS)
-	@printf "\r\033[K$(BOLD)$(LIGHT_BLUE)Full clean complete!$(RESET)\n"
+	@echo "\r\033[KFull clean complete!\n"
 
 bonus: $(BONUS)
 
 $(BONUS): $(LIBFT_A) $(MLX_A) $(BONUS_OBJS)
-	@echo "$(BOLD)$(LIGHT_BLUE)Compile $(BONUS)...$(RESET)"
+	@echo "Compile $(BONUS)..."
 	@$(CC) $(CFLAGS) $(BONUS_OBJS) -L$(LIBFT_DIR) -lft -L$(MLX_DIR) -lmlx $(MLXFLAGS) -o $(BONUS)
-	@echo "$(BOLD)$(LIGHT_BLUE)Compile $(BONUS) Complete!$(RESET)"
+	@echo "Compile $(BONUS) complete!"
 
 re: fclean all
 
