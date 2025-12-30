@@ -17,6 +17,8 @@
 # define WIN_HEIGHT 800
 # define EXT ".rt"
 # define PROGRAM "./miniRT"
+# define PI 3.14159265358979323846
+# define EPSILON 1e-6
 
 # if defined(__APPLE__)
 #  define ESC_KEY 53

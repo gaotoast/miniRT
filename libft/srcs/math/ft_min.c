@@ -6,11 +6,11 @@
 /*   By: kinamura <kinamura@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 16:17:25 by kinamura          #+#    #+#             */
-/*   Updated: 2025/07/20 03:08:32 by kinamura         ###   ########.fr       */
+/*   Updated: 2025/12/27 17:50:06 by kinamura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_math.h"
 
 int	ft_min(int a, int b)
 {

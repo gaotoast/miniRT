@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_values.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*   By: kinamura <kinamura@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 21:03:20 by stakada           #+#    #+#             */
-/*   Updated: 2025/08/28 21:27:05 by stakada          ###   ########.fr       */
+/*   Updated: 2025/12/30 15:08:27 by kinamura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ int	validate_double(double n, double min, double max)
 
 int	validate_colors(t_color color)
 {
-	if (color.r < 0 || color.r > 255)
+	if (color.red < 0 || color.red > 255)
 		return (INVALID);
-	if (color.g < 0 || color.g > 255)
+	if (color.green < 0 || color.green > 255)
 		return (INVALID);
-	if (color.b < 0 || color.b > 255)
+	if (color.blue < 0 || color.blue > 255)
 		return (INVALID);
 	return (VALID);
 }

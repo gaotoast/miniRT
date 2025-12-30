@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*   By: kinamura <kinamura@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 13:37:02 by stakada           #+#    #+#             */
-/*   Updated: 2025/10/21 12:35:30 by stakada          ###   ########.fr       */
+/*   Updated: 2025/12/30 16:06:08 by kinamura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@
 # include "libft.h"
 # include "mlx.h"
 # include "struct.h"
+# include "ft_printf.h"
 # include <math.h>
 # include <stdlib.h>
+#include <float.h>
 
 // check
 int		check_args(int argc, char **argv);
@@ -53,6 +55,24 @@ int		register_object(t_object **objects, t_obj_type type, void *obj);
 // mlx
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 void	run_mlx(t_ctx *ctx);
+
+// render
+void	render_scene(t_ctx *ctx);
+
+// math
+t_vec3	vec3_cross(t_vec3 a, t_vec3 b);
+
+// ray
+int		intersect_sphere(t_vec3 origin, t_vec3 dir, t_sphere *sphere,
+			double *distance, t_vec3 *normal);
+int		intersect_plane(t_vec3 origin, t_vec3 dir, t_plane *plane,
+			double *distance, t_vec3 *normal);
+int		intersect_cylinder(t_vec3 origin, t_vec3 dir, t_cylinder *cylinder,
+			double *distance, t_vec3 *normal);
+
+// shading
+int		get_background_color(t_scene *scene);
+int		shade_color(t_scene *scene, t_color object_color, double diffuse);
 
 // utils
 int		count_array(char **array);

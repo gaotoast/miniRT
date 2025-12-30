@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*   By: kinamura <kinamura@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 11:52:01 by stakada           #+#    #+#             */
-/*   Updated: 2025/10/21 12:39:03 by stakada          ###   ########.fr       */
+/*   Updated: 2025/10/22 00:04:17 by kinamura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	run_mlx(t_ctx *ctx)
 	ctx->img->img = mlx_new_image(ctx->mlx, WIN_WIDTH, WIN_HEIGHT);
 	ctx->img->addr = mlx_get_data_addr(ctx->img->img, &ctx->img->bpp,
 			&ctx->img->line_length, &ctx->img->endian);
+	render_scene(ctx);
 	mlx_put_image_to_window(ctx->mlx, ctx->win, ctx->img->img, 0, 0);
 	mlx_hook(ctx->win, 2, 1L << 0, handle_key_input, ctx);
 	mlx_hook(ctx->win, 17, 1L << 5, close_window, ctx);

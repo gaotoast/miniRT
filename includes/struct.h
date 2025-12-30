@@ -3,35 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*   By: kinamura <kinamura@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 13:36:57 by stakada           #+#    #+#             */
-/*   Updated: 2025/08/28 16:10:33 by stakada          ###   ########.fr       */
+/*   Updated: 2025/12/30 14:40:57 by kinamura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
-
-/**
- * @brief Represents a 3D vector for coordinates, directions, etc.
- */
-typedef struct s_vec3
-{
-	double			x;
-	double			y;
-	double			z;
-}					t_vec3;
-
-/**
- * @brief Represents a color using RGB values, ranging from 0.0 to 1.0.
- */
-typedef struct s_color
-{
-	double			r;
-	double			g;
-	double			b;
-}					t_color;
 
 /**
  * @brief Defines the ambient light in the scene.
@@ -53,6 +33,16 @@ typedef struct s_camera
 	t_vec3			direction;
 	double			fov;
 }					t_camera;
+
+typedef struct s_camera_frame
+{
+	t_vec3	origin;
+	t_vec3	forward;
+	t_vec3	right;
+	t_vec3	up;
+	double	half_width;
+	double	half_height;
+}			t_camera_frame;
 
 /**
  * @brief Defines a light source in the scene.
@@ -155,5 +145,17 @@ typedef struct s_ctx
 	t_img			*img;
 	t_scene			*scene;
 }					t_ctx;
+
+/**
+ * @brief Stores information about a ray-object intersection.
+ */
+typedef struct s_hit
+{
+	t_object		*object;
+	t_vec3			point;
+	t_vec3			normal;
+	t_color			color;
+	double			distance;
+}					t_hit;
 
 #endif

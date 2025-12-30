@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_abs.c                                           :+:      :+:    :+:   */
+/*   vec3_math.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kinamura <kinamura@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/10 12:05:29 by kinamura          #+#    #+#             */
-/*   Updated: 2025/12/27 17:49:55 by kinamura         ###   ########.fr       */
+/*   Created: 2025/10/22 00:41:04 by kinamura          #+#    #+#             */
+/*   Updated: 2025/12/30 16:05:15 by kinamura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_math.h"
+#include "miniRT.h"
 
-int	ft_abs(int i)
+t_vec3	vec3_cross(t_vec3 a, t_vec3 b)
 {
-	if (i < 0)
-		return (-i);
-	return (i);
+	t_vec3	result;
+
+	result.x = a.y * b.z - a.z * b.y;
+	result.y = a.z * b.x - a.x * b.z;
+	result.z = a.x * b.y - a.y * b.x;
+	return (result);
 }

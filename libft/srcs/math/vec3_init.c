@@ -1,38 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_color.c                                        :+:      :+:    :+:   */
+/*   vec3_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kinamura <kinamura@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/20 23:47:59 by kinamura          #+#    #+#             */
-/*   Updated: 2025/10/20 23:53:51 by kinamura         ###   ########.fr       */
+/*   Created: 2025/12/29 11:09:22 by kinamura          #+#    #+#             */
+/*   Updated: 2025/12/29 11:13:24 by kinamura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "color.h"
+#include "ft_math.h"
 
-int		color_get_t(int t);
-int		color_get_r(int r);
-int		color_get_g(int g);
-int		color_get_b(int b);
-
-int	color_get_t(int t)
+t_vec3	*vec3_init(t_vec3 *new, double x, double y, double z)
 {
-	return ((t >> 24) & 0xFF);
-}
-
-int	color_get_r(int r)
-{
-	return ((r >> 16) & 0xFF);
-}
-
-int	color_get_g(int g)
-{
-	return ((g >> 8) & 0xFF);
-}
-
-int	color_get_b(int b)
-{
-	return (b & 0xFF);
+	if (!new)
+	{
+		new = vec3_alloc();
+		if (!new)
+			return (NULL);
+	}
+	new->x = x;
+	new->y = y;
+	new->z = z;
+	return (new);
 }
