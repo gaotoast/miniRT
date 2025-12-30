@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*   By: kinamura <kinamura@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 13:37:02 by stakada           #+#    #+#             */
-/*   Updated: 2025/10/21 12:35:30 by stakada          ###   ########.fr       */
+/*   Updated: 2025/12/30 16:37:27 by kinamura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "libft.h"
 # include "mlx.h"
 # include "struct.h"
+#include "ft_printf.h"
 # include <math.h>
 # include <stdlib.h>
 

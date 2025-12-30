@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*   By: kinamura <kinamura@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 13:13:12 by stakada           #+#    #+#             */
-/*   Updated: 2025/08/28 21:41:20 by stakada          ###   ########.fr       */
+/*   Updated: 2025/12/30 16:46:17 by kinamura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,21 @@ static int	parse_tokens_and_assign(char *str, double *a, double *b, double *c)
 
 int	parse_colors(char *str, t_color *color)
 {
+	double	red;
+	double	green;
+	double	blue;
+	int		ret;
+
 	if (!str || !color)
 		return (-1);
-	return (parse_tokens_and_assign(str, &(color->r), &(color->g),
-			&(color->b)));
+	red = (double)color->red;
+	green = (double)color->green;
+	blue = (double)color->blue;
+	ret = parse_tokens_and_assign(str, &red, &green, &blue);
+	color->red = (int)red;
+	color->green = (int)green;
+	color->blue = (int)blue;
+	return ret;
 }
 
 int	parse_vec3(char *str, t_vec3 *vec)
