@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*   By: kinamura <kinamura@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 19:17:57 by stakada           #+#    #+#             */
-/*   Updated: 2025/10/20 12:14:15 by stakada          ###   ########.fr       */
+/*   Updated: 2026/01/10 19:19:42 by kinamura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,22 @@ void	free_scene(t_scene *scene)
 	t_object	*current;
 	t_object	*next;
 
-	if (scene->objects)
+	if (scene)
 	{
-		current = scene->objects;
-		while (current)
+		if (scene->objects)
 		{
-			next = current->next;
-			free(current->obj_data);
-			free(current);
-			current = next;
+			current = scene->objects;
+			while (current)
+			{
+				next = current->next;
+				free(current->obj_data);
+				free(current);
+				current = next;
+			}
 		}
+		free(scene);
 	}
+	scene = NULL;
 }
 
 void	free_ctx(t_ctx *ctx)

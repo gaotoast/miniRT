@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_camera.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*   By: kinamura <kinamura@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 13:29:46 by stakada           #+#    #+#             */
-/*   Updated: 2025/08/28 22:23:58 by stakada          ###   ########.fr       */
+/*   Updated: 2026/01/10 19:19:58 by kinamura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static char	*check_camera_values(t_camera camera)
 {
-	if (!validate_vec3(camera.direction, 0.0, 1.0))
+	if (!validate_vec3(camera.direction, -1.0, 1.0))
 		return (ERR_MSG_ELEM_VALUE);
 	if (!validate_double(camera.fov, 0.0, 180.0))
 		return (ERR_MSG_ELEM_VALUE);

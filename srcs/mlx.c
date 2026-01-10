@@ -6,7 +6,7 @@
 /*   By: kinamura <kinamura@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 11:52:01 by stakada           #+#    #+#             */
-/*   Updated: 2025/10/22 00:04:17 by kinamura         ###   ########.fr       */
+/*   Updated: 2026/01/10 19:08:55 by kinamura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	close_window(t_ctx *ctx)
 {
 	mlx_destroy_image(ctx->mlx, ctx->img->img);
 	mlx_destroy_window(ctx->mlx, ctx->win);
+	// mlx_destroy_display();
 	free_ctx(ctx);
 	exit(0);
 	return (0);

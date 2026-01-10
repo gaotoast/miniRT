@@ -6,7 +6,7 @@
 /*   By: kinamura <kinamura@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 13:37:02 by stakada           #+#    #+#             */
-/*   Updated: 2025/12/30 16:06:08 by kinamura         ###   ########.fr       */
+/*   Updated: 2026/01/10 19:10:23 by kinamura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include "ft_printf.h"
 # include <math.h>
 # include <stdlib.h>
-#include <float.h>
+# include <float.h>
 
 // check
 int		check_args(int argc, char **argv);
