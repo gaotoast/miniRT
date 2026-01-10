@@ -22,10 +22,55 @@
 
 # if defined(__APPLE__)
 #  define ESC_KEY 53
+#  define KEY_W 13
+#  define KEY_A 0
+#  define KEY_S 1
+#  define KEY_D 2
+#  define KEY_Q 12
+#  define KEY_E 14
+#  define KEY_1 18
+#  define KEY_2 19
+#  define KEY_3 20
+#  define KEY_TAB 48
+#  define KEY_UP 126
+#  define KEY_DOWN 125
+#  define KEY_LEFT 123
+#  define KEY_RIGHT 124
+#  define KEY_PLUS 24
+#  define KEY_MINUS 27
+#  define KEY_H 4
 # else
 #  include <X11/keysym.h>
 #  define ESC_KEY XK_Escape
+#  define KEY_W XK_w
+#  define KEY_A XK_a
+#  define KEY_S XK_s
+#  define KEY_D XK_d
+#  define KEY_Q XK_q
+#  define KEY_E XK_e
+#  define KEY_1 XK_1
+#  define KEY_2 XK_2
+#  define KEY_3 XK_3
+#  define KEY_TAB XK_Tab
+#  define KEY_UP XK_Up
+#  define KEY_DOWN XK_Down
+#  define KEY_LEFT XK_Left
+#  define KEY_RIGHT XK_Right
+#  define KEY_PLUS XK_plus
+#  define KEY_MINUS XK_minus
+#  define KEY_H XK_h
 # endif
+
+# define MOVE_STEP 1.0
+# define ROTATE_STEP 5.0
+# define SIZE_STEP 0.5
+# define FOV_STEP 5.0
+# define BRIGHT_STEP 0.1
+
+# define MOUSE_LEFT 1
+# define MOUSE_RIGHT 2
+# define MOUSE_SCROLL_UP 4
+# define MOUSE_SCROLL_DOWN 5
 
 # define VALID 1
 # define INVALID 0

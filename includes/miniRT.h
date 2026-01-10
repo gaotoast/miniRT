@@ -61,6 +61,22 @@ void	render_scene(t_ctx *ctx);
 
 // math
 t_vec3	vec3_cross(t_vec3 a, t_vec3 b);
+t_vec3	vec3_rotate(t_vec3 v, t_vec3 axis, double angle_deg);
+
+// transform
+void	translate_camera(t_camera *camera, t_vec3 delta);
+void	rotate_camera(t_camera *camera, t_vec3 axis, double angle);
+void	adjust_fov(t_camera *camera, double delta);
+void	translate_light(t_light *light, t_vec3 delta);
+void	adjust_brightness(t_light *light, double delta);
+void	translate_object(t_object *objects, int index, t_vec3 delta);
+void	rotate_object(t_object *objects, int index, t_vec3 axis, double angle);
+void	resize_object(t_object *objects, int index, double delta, int h_mode);
+int		count_objects(t_object *objects);
+
+// key_handler
+void	process_key_input(int keycode, t_ctx *ctx);
+void	process_mouse_input(int button, t_ctx *ctx);
 
 // ray
 int		intersect_sphere(t_vec3 origin, t_vec3 dir, t_sphere *sphere,

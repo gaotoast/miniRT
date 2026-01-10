@@ -34,10 +34,30 @@ int	close_window(t_ctx *ctx)
 	return (0);
 }
 
+static void	re_render(t_ctx *ctx)
+{
+	render_scene(ctx);
+	mlx_put_image_to_window(ctx->mlx, ctx->win, ctx->img->img, 0, 0);
+}
+
 int	handle_key_input(int keycode, t_ctx *ctx)
 {
 	if (keycode == ESC_KEY)
 		close_window(ctx);
+	else
+	{
+		process_key_input(keycode, ctx);
+		re_render(ctx);
+	}
+	return (0);
+}
+
+int	handle_mouse_input(int button, int x, int y, t_ctx *ctx)
+{
+	(void)x;
+	(void)y;
+	process_mouse_input(button, ctx);
+	re_render(ctx);
 	return (0);
 }
 
@@ -58,6 +78,7 @@ void	run_mlx(t_ctx *ctx)
 	render_scene(ctx);
 	mlx_put_image_to_window(ctx->mlx, ctx->win, ctx->img->img, 0, 0);
 	mlx_hook(ctx->win, 2, 1L << 0, handle_key_input, ctx);
+	mlx_hook(ctx->win, 4, 1L << 2, handle_mouse_input, ctx);
 	mlx_hook(ctx->win, 17, 1L << 5, close_window, ctx);
 	mlx_loop(ctx->mlx);
 }

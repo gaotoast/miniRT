@@ -56,6 +56,16 @@ typedef struct s_light
 }					t_light;
 
 /**
+ * @brief Enum for identifying the edit mode.
+ */
+typedef enum e_edit_mode
+{
+	MODE_CAMERA,
+	MODE_LIGHT,
+	MODE_OBJECT,
+}					t_edit_mode;
+
+/**
  * @brief Enum for identifying the type of a geometric object.
  */
 typedef enum e_obj_type
@@ -144,6 +154,8 @@ typedef struct s_ctx
 	void			*win;
 	t_img			*img;
 	t_scene			*scene;
+	t_edit_mode		edit_mode;
+	int				selected_obj;
 }					t_ctx;
 
 /**

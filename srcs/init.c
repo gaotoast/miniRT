@@ -26,6 +26,8 @@ t_ctx	*init_ctx(char *filename)
 		free(ctx);
 		return (NULL);
 	}
+	ctx->edit_mode = MODE_CAMERA;
+	ctx->selected_obj = 0;
 	print_scene(ctx->scene);
 	return (ctx);
 }
