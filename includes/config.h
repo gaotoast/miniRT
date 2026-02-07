@@ -72,6 +72,13 @@
 # define MOUSE_SCROLL_UP 4
 # define MOUSE_SCROLL_DOWN 5
 
+# if defined(__APPLE__)
+#  define ESC_KEY 53
+# else
+#  include <X11/keysym.h>
+#  define ESC_KEY XK_Escape
+# endif
+
 # define VALID 1
 # define INVALID 0
 
