@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*   By: kinamura <kinamura@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 11:52:01 by stakada           #+#    #+#             */
-/*   Updated: 2025/10/21 12:39:03 by stakada          ###   ########.fr       */
+/*   Updated: 2026/01/10 19:08:55 by kinamura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,36 @@ int	close_window(t_ctx *ctx)
 {
 	mlx_destroy_image(ctx->mlx, ctx->img->img);
 	mlx_destroy_window(ctx->mlx, ctx->win);
+	// mlx_destroy_display();
 	free_ctx(ctx);
 	exit(0);
 	return (0);
+}
+
+static void	re_render(t_ctx *ctx)
+{
+	render_scene(ctx);
+	mlx_put_image_to_window(ctx->mlx, ctx->win, ctx->img->img, 0, 0);
 }
 
 int	handle_key_input(int keycode, t_ctx *ctx)
 {
 	if (keycode == ESC_KEY)
 		close_window(ctx);
+	else
+	{
+		process_key_input(keycode, ctx);
+		re_render(ctx);
+	}
+	return (0);
+}
+
+int	handle_mouse_input(int button, int x, int y, t_ctx *ctx)
+{
+	(void)x;
+	(void)y;
+	process_mouse_input(button, ctx);
+	re_render(ctx);
 	return (0);
 }
 
@@ -54,8 +75,10 @@ void	run_mlx(t_ctx *ctx)
 	ctx->img->img = mlx_new_image(ctx->mlx, WIN_WIDTH, WIN_HEIGHT);
 	ctx->img->addr = mlx_get_data_addr(ctx->img->img, &ctx->img->bpp,
 			&ctx->img->line_length, &ctx->img->endian);
+	render_scene(ctx);
 	mlx_put_image_to_window(ctx->mlx, ctx->win, ctx->img->img, 0, 0);
 	mlx_hook(ctx->win, 2, 1L << 0, handle_key_input, ctx);
+	mlx_hook(ctx->win, 4, 1L << 2, handle_mouse_input, ctx);
 	mlx_hook(ctx->win, 17, 1L << 5, close_window, ctx);
 	mlx_loop(ctx->mlx);
 }

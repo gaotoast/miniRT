@@ -6,7 +6,7 @@
 /*   By: kinamura <kinamura@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 13:36:57 by stakada           #+#    #+#             */
-/*   Updated: 2025/12/30 16:47:33 by kinamura         ###   ########.fr       */
+/*   Updated: 2025/12/30 14:40:57 by kinamura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,16 @@ typedef struct s_camera
 	double			fov;
 }					t_camera;
 
+typedef struct s_camera_frame
+{
+	t_vec3	origin;
+	t_vec3	forward;
+	t_vec3	right;
+	t_vec3	up;
+	double	half_width;
+	double	half_height;
+}			t_camera_frame;
+
 /**
  * @brief Defines a light source in the scene.
  * For the mandatory part, there is only one light source.
@@ -44,6 +54,16 @@ typedef struct s_light
 	double			brightness;
 	t_color			color;
 }					t_light;
+
+/**
+ * @brief Enum for identifying the edit mode.
+ */
+typedef enum e_edit_mode
+{
+	MODE_CAMERA,
+	MODE_LIGHT,
+	MODE_OBJECT,
+}					t_edit_mode;
 
 /**
  * @brief Enum for identifying the type of a geometric object.
@@ -134,6 +154,20 @@ typedef struct s_ctx
 	void			*win;
 	t_img			*img;
 	t_scene			*scene;
+	t_edit_mode		edit_mode;
+	int				selected_obj;
 }					t_ctx;
+
+/**
+ * @brief Stores information about a ray-object intersection.
+ */
+typedef struct s_hit
+{
+	t_object		*object;
+	t_vec3			point;
+	t_vec3			normal;
+	t_color			color;
+	double			distance;
+}					t_hit;
 
 #endif

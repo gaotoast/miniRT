@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*   By: kinamura <kinamura@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 19:04:24 by stakada           #+#    #+#             */
-/*   Updated: 2025/08/28 17:04:29 by stakada          ###   ########.fr       */
+/*   Updated: 2026/01/10 19:07:35 by kinamura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ t_scene	*parse_scene(char *filename)
 	t_scene	*scene;
 	int		read_flags;
 
-	scene = (t_scene *)malloc(sizeof(t_scene));
+	scene = (t_scene *)ft_calloc(1, sizeof(t_scene));
 	if (!scene)
 		return (NULL);
 	read_flags = 0;

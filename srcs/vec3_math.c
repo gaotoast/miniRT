@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   vec3_math.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kinamura <kinamura@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/22 13:42:37 by stakada           #+#    #+#             */
-/*   Updated: 2025/12/30 14:44:39 by kinamura         ###   ########.fr       */
+/*   Created: 2025/10/22 00:41:04 by kinamura          #+#    #+#             */
+/*   Updated: 2025/12/30 16:05:15 by kinamura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-void	print_error(char *msg, ...)
+t_vec3	vec3_cross(t_vec3 a, t_vec3 b)
 {
-	va_list	ap;
+	t_vec3	result;
 
-	va_start(ap, msg);
-	write(STDERR_FILENO, "Error\n", 6);
-	ft_vdprintf(STDERR_FILENO, msg, ap);
-	write(STDERR_FILENO, "\n", 1);
-	va_end(ap);
+	result.x = a.y * b.z - a.z * b.y;
+	result.y = a.z * b.x - a.x * b.z;
+	result.z = a.x * b.y - a.y * b.x;
+	return (result);
 }

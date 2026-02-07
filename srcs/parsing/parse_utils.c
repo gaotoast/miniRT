@@ -6,7 +6,7 @@
 /*   By: kinamura <kinamura@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 13:13:12 by stakada           #+#    #+#             */
-/*   Updated: 2025/12/30 16:46:17 by kinamura         ###   ########.fr       */
+/*   Updated: 2025/12/30 14:52:50 by kinamura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,21 +52,18 @@ static int	parse_tokens_and_assign(char *str, double *a, double *b, double *c)
 
 int	parse_colors(char *str, t_color *color)
 {
-	double	red;
-	double	green;
-	double	blue;
-	int		ret;
+	double	r;
+	double	g;
+	double	b;
 
 	if (!str || !color)
 		return (-1);
-	red = (double)color->red;
-	green = (double)color->green;
-	blue = (double)color->blue;
-	ret = parse_tokens_and_assign(str, &red, &green, &blue);
-	color->red = (int)red;
-	color->green = (int)green;
-	color->blue = (int)blue;
-	return ret;
+	if (parse_tokens_and_assign(str, &r, &g, &b) < 0)
+		return (-1);
+	color->red = (int)r;
+	color->green = (int)g;
+	color->blue = (int)b;
+	return (0);
 }
 
 int	parse_vec3(char *str, t_vec3 *vec)

@@ -6,7 +6,7 @@
 /*   By: kinamura <kinamura@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 13:37:02 by stakada           #+#    #+#             */
-/*   Updated: 2025/12/30 16:37:27 by kinamura         ###   ########.fr       */
+/*   Updated: 2026/01/10 19:10:23 by kinamura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,10 @@
 # include "libft.h"
 # include "mlx.h"
 # include "struct.h"
-#include "ft_printf.h"
+# include "ft_printf.h"
 # include <math.h>
 # include <stdlib.h>
+# include <float.h>
 
 // check
 int		check_args(int argc, char **argv);
@@ -54,6 +55,40 @@ int		register_object(t_object **objects, t_obj_type type, void *obj);
 // mlx
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 void	run_mlx(t_ctx *ctx);
+
+// render
+void	render_scene(t_ctx *ctx);
+
+// math
+t_vec3	vec3_cross(t_vec3 a, t_vec3 b);
+t_vec3	vec3_rotate(t_vec3 v, t_vec3 axis, double angle_deg);
+
+// transform
+void	translate_camera(t_camera *camera, t_vec3 delta);
+void	rotate_camera(t_camera *camera, t_vec3 axis, double angle);
+void	adjust_fov(t_camera *camera, double delta);
+void	translate_light(t_light *light, t_vec3 delta);
+void	adjust_brightness(t_light *light, double delta);
+void	translate_object(t_object *objects, int index, t_vec3 delta);
+void	rotate_object(t_object *objects, int index, t_vec3 axis, double angle);
+void	resize_object(t_object *objects, int index, double delta, int h_mode);
+int		count_objects(t_object *objects);
+
+// key_handler
+void	process_key_input(int keycode, t_ctx *ctx);
+void	process_mouse_input(int button, t_ctx *ctx);
+
+// ray
+int		intersect_sphere(t_vec3 origin, t_vec3 dir, t_sphere *sphere,
+			double *distance, t_vec3 *normal);
+int		intersect_plane(t_vec3 origin, t_vec3 dir, t_plane *plane,
+			double *distance, t_vec3 *normal);
+int		intersect_cylinder(t_vec3 origin, t_vec3 dir, t_cylinder *cylinder,
+			double *distance, t_vec3 *normal);
+
+// shading
+int		get_background_color(t_scene *scene);
+int		shade_color(t_scene *scene, t_color object_color, double diffuse);
 
 // utils
 int		count_array(char **array);
