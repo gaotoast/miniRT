@@ -58,6 +58,10 @@ dkms.conf
 # mac
 .DS_Store
 .pdf
+
 # vscode
 .vscode
 *.code-workspace
+
+# others
+.progress_count
