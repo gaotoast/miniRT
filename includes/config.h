@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 21:44:50 by stakada           #+#    #+#             */
-/*   Updated: 2025/10/20 12:42:01 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/09 16:56:31 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # define WIN_HEIGHT 800
 # define EXT ".rt"
 # define PROGRAM "./miniRT"
-# define PI 3.14159265358979323846
 # define EPSILON 1e-6
 
 # if defined(__APPLE__)

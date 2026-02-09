@@ -3,28 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kinamura <kinamura@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 13:45:34 by kinamura          #+#    #+#             */
-/*   Updated: 2025/12/29 16:38:25 by kinamura         ###   ########.fr       */
+/*   Updated: 2026/02/09 16:59:05 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# include "color.h"
+# include "ft_math.h"
+# include "get_next_line.h"
+# include <fcntl.h>
 # include <limits.h>
 # include <stddef.h>
+# include <stdint.h>
+# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdint.h>
-# include <fcntl.h>
-# include <stdio.h>
-# include "get_next_line.h"
-# include "ft_math.h"
-# include "color.h"
 
-# define SUFFIX_TEMP	"XXXXXX"
+# define SUFFIX_TEMP "XXXXXX"
 
 typedef struct s_list
 {
