@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 16:18:14 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/10 16:22:08 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/10 16:43:51 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	translate_light(t_light *light, t_vec3 delta)
 	light->position = vec3_add(light->position, delta);
 }
 
-static void	translate_object_by_type(t_object *obj, t_vec3 delta)
+static void	translate_object_by_type(t_obj *obj, t_vec3 delta)
 {
 	if (obj->type == SPHERE)
 		((t_sphere *)obj->obj_data)->center = vec3_add(((t_sphere *)obj->obj_data)->center,
@@ -35,10 +35,10 @@ static void	translate_object_by_type(t_object *obj, t_vec3 delta)
 				delta);
 }
 
-void	translate_object(t_object *objects, int index, t_vec3 delta)
+void	translate_object(t_obj *objects, int index, t_vec3 delta)
 {
-	t_object	*obj;
-	int			i;
+	t_obj	*obj;
+	int		i;
 
 	obj = objects;
 	i = 0;

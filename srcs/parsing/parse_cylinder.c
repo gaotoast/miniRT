@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 15:53:26 by stakada           #+#    #+#             */
-/*   Updated: 2025/08/28 22:31:05 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/10 16:40:36 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static char	*check_cylinder_format(char **elems, t_cylinder *cylinder)
 	return (NULL);
 }
 
-int	parse_cylinder(char **elems, t_object **objects, int *read_flags)
+int	parse_cylinder(char **elems, t_obj**objects, int *read_flags)
 {
 	char		*err_msg;
 	t_cylinder	*cylinder;

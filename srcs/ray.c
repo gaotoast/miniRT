@@ -6,13 +6,13 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 15:46:35 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/10 16:09:20 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/10 16:41:41 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-static t_color	get_object_color(t_object *object)
+static t_color	get_object_color(t_obj *object)
 {
 	t_color	color;
 
@@ -29,7 +29,7 @@ static t_color	get_object_color(t_object *object)
 	return (color);
 }
 
-static int	intersect_object(t_object *object, t_vec3 origin, t_vec3 dir,
+static int	intersect_object(t_obj *object, t_vec3 origin, t_vec3 dir,
 		double *distance, t_vec3 *normal)
 {
 	/* オブジェクト種別に応じて適切な交差判定関数へ振り分け */
@@ -47,12 +47,12 @@ static int	intersect_object(t_object *object, t_vec3 origin, t_vec3 dir,
 
 static int	find_closest_hit(t_ctx *ctx, t_vec3 origin, t_vec3 dir, t_hit *hit)
 {
-	t_object	*object;
-	double		distance;
-	double		best_distance;
-	t_vec3		normal;
-	t_vec3		best_normal;
-	t_object	*best_object;
+	t_obj	*object;
+	double	distance;
+	double	best_distance;
+	t_vec3	normal;
+	t_vec3	best_normal;
+	t_obj	*best_object;
 
 	if (!ctx || !ctx->scene || !hit)
 		return (0);
@@ -90,11 +90,11 @@ static int	is_black_light(t_color color)
 static int	is_in_shadow(t_ctx *ctx, t_hit *hit, t_vec3 light_dir,
 		double light_distance)
 {
-	t_object	*object;
-	t_vec3		origin;
-	double		distance;
-	t_vec3		normal;
-	double		max_distance;
+	t_obj	*object;
+	t_vec3	origin;
+	double	distance;
+	t_vec3	normal;
+	double	max_distance;
 
 	if (!ctx || !ctx->scene || !hit)
 		return (0);

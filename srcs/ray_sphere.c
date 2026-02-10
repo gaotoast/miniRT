@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_sphere.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kinamura <kinamura@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 01:32:11 by kinamura          #+#    #+#             */
-/*   Updated: 2025/12/30 14:35:40 by kinamura         ###   ########.fr       */
+/*   Updated: 2026/02/10 16:38:37 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static double	solve_quadratic(double a, double b, double discriminant)
 }
 
 int	intersect_sphere(t_vec3 origin, t_vec3 dir, t_sphere *sphere,
-			double *distance, t_vec3 *normal)
+		double *distance, t_vec3 *normal)
 {
 	t_vec3	oc;
 	double	a;

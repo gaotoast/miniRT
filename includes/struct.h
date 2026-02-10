@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 13:36:57 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/10 15:41:27 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/10 16:41:03 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,12 +114,12 @@ typedef struct s_cylinder
  * @brief A generic object structure, used to create a linked list of all
  * objects in the scene.
  */
-typedef struct s_object
+typedef struct s_obj
 {
 	t_obj_type		type;
 	void			*obj_data;
-	struct s_object	*next;
-}					t_object;
+	struct s_obj	*next;
+}					t_obj;
 
 /**
  * @brief Holds all parsed data that defines the scene's contents.
@@ -129,7 +129,7 @@ typedef struct s_scene
 	t_ambient		ambient;
 	t_camera		camera;
 	t_light			light;
-	t_object		*objects;
+	t_obj			*objects;
 }					t_scene;
 
 /**
@@ -164,7 +164,7 @@ typedef struct s_ctx
  */
 typedef struct s_hit
 {
-	t_object		*object;
+	t_obj			*object;
 	t_vec3			point;
 	t_vec3			normal;
 	t_color			color;

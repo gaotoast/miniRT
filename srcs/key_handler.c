@@ -6,16 +6,16 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 20:00:00 by kinamura          #+#    #+#             */
-/*   Updated: 2026/02/10 16:19:16 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/10 16:42:06 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-int	count_objects(t_object *objects)
+int	count_objects(t_obj *objects)
 {
 	int			count;
-	t_object	*obj;
+	t_obj	*obj;
 
 	count = 0;
 	obj = objects;
@@ -99,8 +99,8 @@ static void	handle_light_keys(int keycode, t_ctx *ctx)
 
 static void	handle_object_keys(int keycode, t_ctx *ctx)
 {
-	t_object	*objs;
-	int			idx;
+	t_obj	*objs;
+	int		idx;
 
 	objs = ctx->scene->objects;
 	idx = ctx->selected_obj;

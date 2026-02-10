@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kinamura <kinamura@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 19:17:57 by stakada           #+#    #+#             */
-/*   Updated: 2026/01/10 19:19:42 by kinamura         ###   ########.fr       */
+/*   Updated: 2026/02/10 16:42:24 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	free_2d_array(char **array)
 
 void	free_scene(t_scene *scene)
 {
-	t_object	*current;
-	t_object	*next;
+	t_obj	*current;
+	t_obj	*next;
 
 	if (scene)
 	{

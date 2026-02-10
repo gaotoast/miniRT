@@ -6,17 +6,17 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 14:19:32 by stakada           #+#    #+#             */
-/*   Updated: 2025/08/28 22:18:35 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/10 16:42:52 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-t_object	*create_object_node(t_obj_type type, void *obj)
+t_obj	*create_object_node(t_obj_type type, void *obj)
 {
-	t_object	*node;
+	t_obj	*node;
 
-	node = (t_object *)malloc(sizeof(t_object));
+	node = (t_obj *)malloc(sizeof(t_obj));
 	if (!node)
 	{
 		perror("");
@@ -28,9 +28,9 @@ t_object	*create_object_node(t_obj_type type, void *obj)
 	return (node);
 }
 
-int	append_object_to_list(t_object **objects, t_object *new)
+int	append_object_to_list(t_obj **objects, t_obj *new)
 {
-	t_object	*current;
+	t_obj	*current;
 
 	if (!objects)
 		return (-1);
@@ -46,9 +46,9 @@ int	append_object_to_list(t_object **objects, t_object *new)
 	return (0);
 }
 
-int	register_object(t_object **objects, t_obj_type type, void *obj)
+int	register_object(t_obj **objects, t_obj_type type, void *obj)
 {
-	t_object	*new;
+	t_obj	*new;
 
 	if (!objects || !obj)
 		return (-1);

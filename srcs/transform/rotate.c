@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 16:19:29 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/10 16:20:18 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/10 16:43:49 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	rotate_camera(t_camera *camera, t_vec3 axis, double angle)
 				angle));
 }
 
-static void	rotate_object_by_type(t_object *obj, t_vec3 axis, double angle)
+static void	rotate_object_by_type(t_obj *obj, t_vec3 axis, double angle)
 {
 	t_plane		*plane;
 	t_cylinder	*cylinder;
@@ -36,10 +36,10 @@ static void	rotate_object_by_type(t_object *obj, t_vec3 axis, double angle)
 	}
 }
 
-void	rotate_object(t_object *objects, int index, t_vec3 axis, double angle)
+void	rotate_object(t_obj *objects, int index, t_vec3 axis, double angle)
 {
-	t_object	*obj;
-	int			i;
+	t_obj	*obj;
+	int		i;
 
 	obj = objects;
 	i = 0;

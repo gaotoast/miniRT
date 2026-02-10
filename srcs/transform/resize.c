@@ -6,13 +6,13 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 16:19:58 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/10 16:20:08 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/10 16:43:50 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-static void	resize_object_by_type(t_object *obj, double delta, int height_mode)
+static void	resize_object_by_type(t_obj *obj, double delta, int height_mode)
 {
 	t_sphere	*sphere;
 	t_cylinder	*cylinder;
@@ -42,10 +42,10 @@ static void	resize_object_by_type(t_object *obj, double delta, int height_mode)
 	}
 }
 
-void	resize_object(t_object *objects, int index, double delta, int h_mode)
+void	resize_object(t_obj *objects, int index, double delta, int h_mode)
 {
-	t_object	*obj;
-	int			i;
+	t_obj	*obj;
+	int		i;
 
 	obj = objects;
 	i = 0;

@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 14:09:37 by stakada           #+#    #+#             */
-/*   Updated: 2025/08/28 22:31:27 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/10 16:40:36 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static char	*check_sphere_format(char **elems, t_sphere *sphere)
 	return (NULL);
 }
 
-int	parse_sphere(char **elems, t_object **objects, int *read_flags)
+int	parse_sphere(char **elems, t_obj**objects, int *read_flags)
 {
 	char		*err_msg;
 	t_sphere	*sphere;
