@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_camera.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kinamura <kinamura@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 13:29:46 by stakada           #+#    #+#             */
-/*   Updated: 2026/01/10 19:19:58 by kinamura         ###   ########.fr       */
+/*   Updated: 2026/02/10 15:45:07 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static char	*check_camera_values(t_camera camera)
 {
 	if (!validate_vec3(camera.direction, -1.0, 1.0))
 		return (ERR_MSG_ELEM_VALUE);
-	if (!validate_double(camera.fov, 0.0, 180.0))
+	if (!validate_double(camera.fov_deg, 0.0, 180.0))
 		return (ERR_MSG_ELEM_VALUE);
 	return (NULL);
 }
@@ -33,7 +33,7 @@ static char	*check_camera_format(char **elems, t_camera *camera, int read_flags)
 	if (!is_valid_csv(elems[1]) || parse_vec3(elems[1],
 			&(camera->direction)) < 0)
 		return (ERR_MSG_ELEM_FORMAT);
-	if (!is_valid_num(elems[2]) || get_double(elems[2], &(camera->fov)) < 0)
+	if (!is_valid_num(elems[2]) || get_double(elems[2], &(camera->fov_deg)) < 0)
 		return (ERR_MSG_ELEM_FORMAT);
 	return (NULL);
 }

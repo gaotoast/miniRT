@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 22:15:34 by stakada           #+#    #+#             */
-/*   Updated: 2025/08/28 22:14:25 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/10 15:38:10 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	print_camera(t_camera camera)
 	printf("Camera:\n");
 	print_vec3("  Position", camera.position);
 	print_vec3("  Direction", camera.direction);
-	printf("  FOV: %.2f\n", camera.fov);
+	printf("  FOV: %.2f\n", camera.fov_deg);
 }
 
 static void	print_light(t_light light)

@@ -3,32 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   render_shading.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kinamura <kinamura@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 00:41:16 by kinamura          #+#    #+#             */
-/*   Updated: 2025/12/30 14:48:53 by kinamura         ###   ########.fr       */
+/*   Updated: 2026/02/10 15:50:13 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
-
-static double	clamp01(double value)
-{
-	if (value < 0.0)
-		return (0.0);
-	if (value > 1.0)
-		return (1.0);
-	return (value);
-}
-
-static int	clamp_color(double value)
-{
-	if (value < 0.0)
-		return (0);
-	if (value > 255.0)
-		return (255);
-	return ((int)(value + 0.5));
-}
 
 static int	trgb_from_rgb(double r, double g, double b)
 {
@@ -80,8 +62,8 @@ int	shade_color(t_scene *scene, t_color object_color, double diffuse)
 	light_r = scene->light.color.red / 255.0;
 	light_g = scene->light.color.green / 255.0;
 	light_b = scene->light.color.blue / 255.0;
-	return (trgb_from_rgb(
-			object_color.red * channel_intensity(ambient_r, light_r, diffuse),
-			object_color.green * channel_intensity(ambient_g, light_g, diffuse),
-			object_color.blue * channel_intensity(ambient_b, light_b, diffuse)));
+	return (trgb_from_rgb(object_color.red * channel_intensity(ambient_r,
+				light_r, diffuse), object_color.green
+			* channel_intensity(ambient_g, light_g, diffuse), object_color.blue
+			* channel_intensity(ambient_b, light_b, diffuse)));
 }

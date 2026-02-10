@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 13:37:02 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/10 14:17:36 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/10 15:50:05 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void	run_mlx(t_ctx *ctx);
 
 // render
 void	render_scene(t_ctx *ctx);
+int		trace_ray(t_ctx *ctx, t_vec3 origin, t_vec3 dir);
 
 // transform
 void	translate_camera(t_camera *camera, t_vec3 delta);
@@ -90,6 +91,8 @@ int		shade_color(t_scene *scene, t_color object_color, double diffuse);
 int		count_array(char **array);
 double	ft_strtod(const char *nptr, char **endptr);
 t_vec3	vec3_rotate(t_vec3 v, t_vec3 axis, double angle_deg);
+double	clamp01(double value);
+int		clamp_color(double value);
 
 // error
 void	print_error(char *msg, ...);

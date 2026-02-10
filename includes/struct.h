@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kinamura <kinamura@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 13:36:57 by stakada           #+#    #+#             */
-/*   Updated: 2025/12/30 14:40:57 by kinamura         ###   ########.fr       */
+/*   Updated: 2026/02/10 15:41:27 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,21 @@ typedef struct s_camera
 {
 	t_vec3			position;
 	t_vec3			direction;
-	double			fov;
+	double			fov_deg;
 }					t_camera;
 
 typedef struct s_camera_frame
 {
-	t_vec3	origin;
-	t_vec3	forward;
-	t_vec3	right;
-	t_vec3	up;
-	double	half_width;
-	double	half_height;
-}			t_camera_frame;
+	// coordinates
+	t_vec3			origin;
+	// orientation
+	t_vec3			forward;
+	t_vec3			right;
+	t_vec3			up;
+	// viewport
+	double			half_width;
+	double			half_height;
+}					t_camera_frame;
 
 /**
  * @brief Defines a light source in the scene.
@@ -110,8 +113,6 @@ typedef struct s_cylinder
 /**
  * @brief A generic object structure, used to create a linked list of all
  * objects in the scene.
- * @param properties A void pointer to the specific object's struct (e.g.,
-	s_sphere).
  */
 typedef struct s_object
 {
