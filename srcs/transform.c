@@ -3,32 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   transform.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kinamura <kinamura@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 20:00:00 by kinamura          #+#    #+#             */
-/*   Updated: 2026/01/10 20:00:00 by kinamura         ###   ########.fr       */
+/*   Updated: 2026/02/10 14:14:32 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
-
-t_vec3	vec3_rotate(t_vec3 v, t_vec3 axis, double angle_deg)
-{
-	double	angle_rad;
-	double	cos_a;
-	double	sin_a;
-	t_vec3	k;
-	t_vec3	result;
-
-	angle_rad = angle_deg * PI / 180.0;
-	cos_a = cos(angle_rad);
-	sin_a = sin(angle_rad);
-	k = vec3_normalize(axis);
-	result = vec3_mul(v, cos_a);
-	result = vec3_add(result, vec3_mul(vec3_cross(k, v), sin_a));
-	result = vec3_add(result, vec3_mul(k, vec3_dot(k, v) * (1.0 - cos_a)));
-	return (result);
-}
 
 void	translate_camera(t_camera *camera, t_vec3 delta)
 {
@@ -37,8 +19,8 @@ void	translate_camera(t_camera *camera, t_vec3 delta)
 
 void	rotate_camera(t_camera *camera, t_vec3 axis, double angle)
 {
-	camera->direction = vec3_normalize(
-			vec3_rotate(camera->direction, axis, angle));
+	camera->direction = vec3_normalize(vec3_rotate(camera->direction, axis,
+				angle));
 }
 
 void	adjust_fov(t_camera *camera, double delta)
@@ -67,14 +49,14 @@ void	adjust_brightness(t_light *light, double delta)
 static void	translate_object_by_type(t_object *obj, t_vec3 delta)
 {
 	if (obj->type == SPHERE)
-		((t_sphere *)obj->obj_data)->center = vec3_add(
-				((t_sphere *)obj->obj_data)->center, delta);
+		((t_sphere *)obj->obj_data)->center = vec3_add(((t_sphere *)obj->obj_data)->center,
+				delta);
 	else if (obj->type == PLANE)
-		((t_plane *)obj->obj_data)->point = vec3_add(
-				((t_plane *)obj->obj_data)->point, delta);
+		((t_plane *)obj->obj_data)->point = vec3_add(((t_plane *)obj->obj_data)->point,
+				delta);
 	else if (obj->type == CYLINDER)
-		((t_cylinder *)obj->obj_data)->center = vec3_add(
-				((t_cylinder *)obj->obj_data)->center, delta);
+		((t_cylinder *)obj->obj_data)->center = vec3_add(((t_cylinder *)obj->obj_data)->center,
+				delta);
 }
 
 void	translate_object(t_object *objects, int index, t_vec3 delta)
@@ -106,8 +88,8 @@ static void	rotate_object_by_type(t_object *obj, t_vec3 axis, double angle)
 	else if (obj->type == CYLINDER)
 	{
 		cylinder = (t_cylinder *)obj->obj_data;
-		cylinder->axis = vec3_normalize(
-				vec3_rotate(cylinder->axis, axis, angle));
+		cylinder->axis = vec3_normalize(vec3_rotate(cylinder->axis, axis,
+					angle));
 	}
 }
 

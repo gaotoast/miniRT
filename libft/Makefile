@@ -88,7 +88,6 @@ MATH_SRCS	=	$(MATH_DIR)/ft_abs.c \
 				$(MATH_DIR)/vec3_length.c \
 				$(MATH_DIR)/vec3_mul.c \
 				$(MATH_DIR)/vec3_normalize.c \
-				$(MATH_DIR)/vec3_rotate.c \
 				$(MATH_DIR)/vec3_sub.c
 MEM_SRCS	=	$(MEM_DIR)/ft_bzero.c \
 				$(MEM_DIR)/ft_memchr.c \

@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 17:49:14 by kinamura          #+#    #+#             */
-/*   Updated: 2026/02/09 16:59:00 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/10 14:17:15 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,5 @@ double		vec3_dot(t_vec3 a, t_vec3 b);
 double		vec3_length(t_vec3 v);
 t_vec3		vec3_normalize(t_vec3 v);
 t_vec3		vec3_cross(t_vec3 a, t_vec3 b);
-t_vec3		vec3_rotate(t_vec3 v, t_vec3 axis, double angle_deg);
 
 #endif

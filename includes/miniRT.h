@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kinamura <kinamura@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 13:37:02 by stakada           #+#    #+#             */
-/*   Updated: 2026/01/10 19:10:23 by kinamura         ###   ########.fr       */
+/*   Updated: 2026/02/10 14:17:36 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 
 # include "config.h"
 # include "errors.h"
+# include "ft_printf.h"
 # include "libft.h"
 # include "mlx.h"
 # include "struct.h"
-# include "ft_printf.h"
+# include <float.h>
 # include <math.h>
 # include <stdlib.h>
-# include <float.h>
 
 // check
 int		check_args(int argc, char **argv);
@@ -59,10 +59,6 @@ void	run_mlx(t_ctx *ctx);
 // render
 void	render_scene(t_ctx *ctx);
 
-// math
-t_vec3	vec3_cross(t_vec3 a, t_vec3 b);
-t_vec3	vec3_rotate(t_vec3 v, t_vec3 axis, double angle_deg);
-
 // transform
 void	translate_camera(t_camera *camera, t_vec3 delta);
 void	rotate_camera(t_camera *camera, t_vec3 axis, double angle);
@@ -93,6 +89,7 @@ int		shade_color(t_scene *scene, t_color object_color, double diffuse);
 // utils
 int		count_array(char **array);
 double	ft_strtod(const char *nptr, char **endptr);
+t_vec3	vec3_rotate(t_vec3 v, t_vec3 axis, double angle_deg);
 
 // error
 void	print_error(char *msg, ...);
