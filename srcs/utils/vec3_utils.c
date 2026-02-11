@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec3_rotate.c                                      :+:      :+:    :+:   */
+/*   vec3_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 19:28:28 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/09 16:55:16 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/10 23:37:38 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,11 @@ t_vec3	vec3_rotate(t_vec3 v, t_vec3 axis, double angle_deg)
 	result = vec3_add(result, vec3_mul(vec3_cross(k, v), sin_a));
 	result = vec3_add(result, vec3_mul(k, vec3_dot(k, v) * (1.0 - cos_a)));
 	return (result);
+}
+
+t_vec3	front_normal(t_vec3 normal, t_vec3 ray_dir)
+{
+	if (vec3_dot(normal, ray_dir) > 0.0)
+		return (vec3_mul(normal, -1.0));
+	return (normal);
 }

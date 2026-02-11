@@ -3,142 +3,125 @@
 /*                                                        :::      ::::::::   */
 /*   ray_cylinder.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kinamura <kinamura@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 01:32:25 by kinamura          #+#    #+#             */
-/*   Updated: 2025/12/30 14:35:40 by kinamura         ###   ########.fr       */
+/*   Updated: 2026/02/11 20:57:10 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
-#include <float.h>
 
-static void	update_best(double t, t_vec3 normal,
-			double *best_distance, t_vec3 *best_normal, int *hit)
+static void	update_nearest_hit(t_hit *hit, double t, t_vec3 normal)
 {
-	if (t <= EPSILON || t >= *best_distance)
+	if (t >= hit->distance)
 		return ;
-	*best_distance = t;
-	*best_normal = normal;
-	*hit = 1;
+	hit->distance = t;
+	hit->normal = normal;
 }
 
-static void	try_side_solution(t_vec3 origin, t_vec3 dir, t_cylinder *cylinder,
-			t_vec3 axis, double half_height, double t,
-			double *best_distance, t_vec3 *best_normal, int *hit)
+static void	get_quadratic_coeffs(t_ray ray, const t_cylinder *cy, double *a,
+		double *b, double *c)
+{
+	t_vec3	oc;
+	double	dot_dir_axis;
+	double	dot_oc_axis;
+	double	radius;
+
+	oc = vec3_sub(ray.origin, cy->center);
+	dot_dir_axis = vec3_dot(ray.direction, cy->axis);
+	dot_oc_axis = vec3_dot(oc, cy->axis);
+	radius = cy->diameter * 0.5;
+	*a = vec3_dot(ray.direction, ray.direction) - dot_dir_axis * dot_dir_axis;
+	*b = 2.0 * (vec3_dot(ray.direction, oc) - dot_dir_axis * dot_oc_axis);
+	*c = vec3_dot(oc, oc) - dot_oc_axis * dot_oc_axis - radius * radius;
+}
+
+static void	try_update_nearest_hit(t_ray ray, t_cylinder *cy, t_hit *hit,
+		double t)
 {
 	t_vec3	point;
-	double	height_pos;
+	double	dot;
+	double	cy_half_h;
 	t_vec3	normal;
 
-	if (t > EPSILON)
-	{
-		point = vec3_add(origin, vec3_mul(dir, t));
-		height_pos = vec3_dot(vec3_sub(point, cylinder->center), axis);
-		if (height_pos >= -half_height && height_pos <= half_height)
-		{
-			normal = vec3_sub(vec3_sub(point, cylinder->center),
-					vec3_mul(axis, height_pos));
-			normal = vec3_normalize(normal);
-			if (vec3_dot(normal, dir) > 0.0)
-				normal = vec3_mul(normal, -1.0);
-			update_best(t, normal, best_distance, best_normal, hit);
-		}
-	}
+	point = vec3_add(ray.origin, vec3_mul(ray.direction, t));
+	dot = vec3_dot(vec3_sub(point, cy->center), cy->axis);
+	cy_half_h = cy->height * 0.5;
+	if (dot < -cy_half_h || dot > cy_half_h)
+		return ;
+	normal = vec3_sub(vec3_sub(point, cy->center), vec3_mul(cy->axis, dot));
+	normal = vec3_normalize(normal);
+	normal = front_normal(normal, ray.direction);
+	update_nearest_hit(hit, t, normal);
 }
 
-static void	check_side_hits(t_vec3 origin, t_vec3 dir, t_cylinder *cylinder,
-			double *best_distance, t_vec3 *best_normal, int *hit)
+static void	find_side_intersection(t_ray ray, t_cylinder *cy, t_hit *hit)
 {
-	t_vec3	axis;
-	t_vec3	dp;
-	double	radius;
-	double	half_height;
-	double	dir_axis;
-	double	dp_axis;
 	double	a;
 	double	b;
 	double	c;
-	double	discriminant;
-	double	sqrt_disc;
+	double	disc;
+	double	t;
 
-	axis = vec3_normalize(cylinder->axis);
-	dp = vec3_sub(origin, cylinder->center);
-	radius = cylinder->diameter * 0.5;
-	half_height = cylinder->height * 0.5;
-	dir_axis = vec3_dot(dir, axis);
-	dp_axis = vec3_dot(dp, axis);
-	a = vec3_dot(dir, dir) - dir_axis * dir_axis;
-	b = 2.0 * (vec3_dot(dir, dp) - dir_axis * dp_axis);
-	c = vec3_dot(dp, dp) - dp_axis * dp_axis - radius * radius;
+	get_quadratic_coeffs(ray, cy, &a, &b, &c);
 	if (fabs(a) < EPSILON)
 		return ;
-	discriminant = b * b - 4.0 * a * c;
-	if (discriminant < 0.0)
+	disc = b * b - 4.0 * a * c;
+	if (disc < 0.0)
 		return ;
-	sqrt_disc = sqrt(discriminant);
-	try_side_solution(origin, dir, cylinder, axis, half_height,
-		(-b - sqrt_disc) / (2.0 * a), best_distance, best_normal, hit);
-	if (discriminant > EPSILON)
+	t = (-b - sqrt(disc)) / (2.0 * a);
+	if (t > EPSILON)
 	{
-		try_side_solution(origin, dir, cylinder, axis, half_height,
-			(-b + sqrt_disc) / (2.0 * a), best_distance, best_normal, hit);
+		try_update_nearest_hit(ray, cy, hit, t);
+		return ;
 	}
+	t = (-b + sqrt(disc)) / (2.0 * a);
+	if (t > EPSILON)
+		try_update_nearest_hit(ray, cy, hit, t);
 }
 
-static void	check_cap_hit(t_vec3 origin, t_vec3 dir, t_vec3 cap_center,
-			t_vec3 cap_normal, double radius, double *best_distance,
-			t_vec3 *best_normal, int *hit)
+static void	find_cap_intersection(t_ray ray, t_vec3 cap_center,
+		t_vec3 cap_normal, double radius, t_hit *hit)
 {
 	double	denom;
 	double	t;
 	t_vec3	point;
-	t_vec3	diff;
+	t_vec3	normal;
+	t_vec3	d;
 
-	denom = vec3_dot(dir, cap_normal);
+	denom = vec3_dot(ray.direction, cap_normal);
 	if (fabs(denom) < EPSILON)
 		return ;
-	t = vec3_dot(vec3_sub(cap_center, origin), cap_normal) / denom;
-	if (t <= EPSILON || t >= *best_distance)
+	t = vec3_dot(vec3_sub(cap_center, ray.origin), cap_normal) / denom;
+	if (t <= EPSILON || t >= hit->distance)
 		return ;
-	point = vec3_add(origin, vec3_mul(dir, t));
-	diff = vec3_sub(point, cap_center);
-	if (vec3_dot(diff, diff) > radius * radius + EPSILON)
+	point = vec3_add(ray.origin, vec3_mul(ray.direction, t));
+	d = vec3_sub(point, cap_center);
+	if (vec3_dot(d, d) > radius * radius)
 		return ;
-	if (vec3_dot(cap_normal, dir) > 0.0)
-		cap_normal = vec3_mul(cap_normal, -1.0);
-	update_best(t, cap_normal, best_distance, best_normal, hit);
+	normal = front_normal(cap_normal, ray.direction);
+	update_nearest_hit(hit, t, normal);
 }
 
-int	intersect_cylinder(t_vec3 origin, t_vec3 dir, t_cylinder *cylinder,
-			double *distance, t_vec3 *normal)
+int	calculate_cylinder_hit(t_ray ray, t_cylinder *cy, t_hit *hit)
 {
-	t_vec3	axis;
-	double	best_distance;
-	t_vec3	best_normal;
-	int		hit;
 	double	radius;
-	double	half_height;
 	t_vec3	top_center;
 	t_vec3	bottom_center;
 
-	if (!cylinder || !distance || !normal)
+	if (!cy || !hit)
 		return (0);
-	axis = vec3_normalize(cylinder->axis);
-	best_distance = DBL_MAX;
-	hit = 0;
-	radius = cylinder->diameter * 0.5;
-	half_height = cylinder->height * 0.5;
-	check_side_hits(origin, dir, cylinder, &best_distance, &best_normal, &hit);
-	top_center = vec3_add(cylinder->center, vec3_mul(axis, half_height));
-	bottom_center = vec3_add(cylinder->center, vec3_mul(axis, -half_height));
-	check_cap_hit(origin, dir, top_center, axis, radius,
-		&best_distance, &best_normal, &hit);
-	check_cap_hit(origin, dir, bottom_center, vec3_mul(axis, -1.0), radius,
-		&best_distance, &best_normal, &hit);
-	if (!hit || best_distance == DBL_MAX)
+	radius = cy->diameter * 0.5;
+	hit->distance = DBL_MAX;
+	find_side_intersection(ray, cy, hit);
+	top_center = vec3_add(cy->center, vec3_mul(cy->axis, cy->height * 0.5));
+	bottom_center = vec3_add(cy->center, vec3_mul(cy->axis, -(cy->height
+					* 0.5)));
+	find_cap_intersection(ray, top_center, cy->axis, radius, hit);
+	find_cap_intersection(ray, bottom_center, vec3_mul(cy->axis, -1.0), radius,
+		hit);
+	if (hit->distance == DBL_MAX)
 		return (0);
-	*distance = best_distance;
-	*normal = best_normal;
 	return (1);
 }

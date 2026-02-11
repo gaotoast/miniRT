@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 13:36:57 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/10 16:41:03 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/10 17:23:44 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,6 +158,12 @@ typedef struct s_ctx
 	t_edit_mode		edit_mode;
 	int				selected_obj;
 }					t_ctx;
+
+typedef struct s_ray
+{
+	t_vec3			origin;
+	t_vec3			direction;
+}					t_ray;
 
 /**
  * @brief Stores information about a ray-object intersection.
