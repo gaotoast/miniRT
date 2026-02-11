@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 00:47:58 by kinamura          #+#    #+#             */
-/*   Updated: 2026/02/11 20:30:21 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/11 22:44:57 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ static t_vec3	get_ray_direction(t_camera_frame *frame, int x, int y)
 	return (vec3_normalize(dir));
 }
 
+// TODO: delete debug statement (print_scene)
 void	render_scene(t_ctx *ctx)
 {
 	t_camera_frame	frame;
@@ -63,6 +64,7 @@ void	render_scene(t_ctx *ctx)
 
 	if (!ctx || !ctx->scene || !ctx->img)
 		return ;
+	print_scene(ctx->scene);
 	init_camera_frame(ctx->scene->camera, &frame);
 	y = 0;
 	while (y < WIN_HEIGHT)

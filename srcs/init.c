@@ -6,13 +6,12 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 19:26:43 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/11 22:38:13 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/11 22:44:04 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-// TODO: delete debug statement
 t_ctx	*init_ctx(char *filename)
 {
 	t_ctx	*ctx;
@@ -28,6 +27,5 @@ t_ctx	*init_ctx(char *filename)
 	}
 	ctx->edit_mode = MODE_CAMERA;
 	ctx->selected_obj = 0;
-	print_scene(ctx->scene);
 	return (ctx);
 }
