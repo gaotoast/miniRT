@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 13:13:12 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/09 18:07:09 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/11 23:56:42 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static int	get_int(char *str, int *n)
 {
-	char	*endptr;
-	long	ret;
+	char		*endptr;
+	long long	ret;
 
 	if (!str || !*str || !n)
 		return (-1);
@@ -23,7 +23,7 @@ static int	get_int(char *str, int *n)
 	ret = ft_strtol(str, &endptr, 10);
 	if (endptr && !(*endptr == '\0' || *endptr == '\n'))
 		return (-1);
-	if (ret < (long)INT_MIN || ret > (long)INT_MAX)
+	if (ret < (long long)INT_MIN || ret > (long long)INT_MAX)
 		return (-1);
 	*n = (int)ret;
 	return (0);
