@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clamp.c                                            :+:      :+:    :+:   */
+/*   quad.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/10 15:49:01 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/11 22:35:22 by stakada          ###   ########.fr       */
+/*   Created: 2026/02/11 22:35:11 by stakada           #+#    #+#             */
+/*   Updated: 2026/02/11 22:35:25 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-double	clamp01(double value)
+void	quad_roots(t_quad *q, double *t0, double *t1)
 {
-	if (value < 0.0)
-		return (0.0);
-	if (value > 1.0)
-		return (1.0);
-	return (value);
-}
+	double	sqrt_disc;
+	double	denom;
 
-int	clamp_color(double value)
-{
-	if (value < 0.0)
-		return (0);
-	if (value > 255.0)
-		return (255);
-	return ((int)(value + 0.5));
+	sqrt_disc = sqrt(q->disc);
+	denom = 2.0 * q->a;
+	*t0 = (-q->b - sqrt_disc) / denom;
+	*t1 = (-q->b + sqrt_disc) / denom;
 }

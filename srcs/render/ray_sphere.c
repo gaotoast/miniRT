@@ -6,73 +6,51 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 01:32:11 by kinamura          #+#    #+#             */
-/*   Updated: 2026/02/11 20:30:53 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/11 21:53:17 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-static void	get_quadratic_coeffs(t_ray ray, t_sphere *sp, double *b, double *c)
+static double	find_sphere_hit_t(t_ray ray, t_sp_ctx *c)
 {
+	t_quad	q;
 	t_vec3	oc;
-	double	radius;
+	double	t0;
+	double	t1;
 
-	oc = vec3_sub(ray.origin, sp->center);
-	radius = sp->diameter * 0.5;
-	*b = 2.0 * vec3_dot(oc, ray.direction);
-	*c = vec3_dot(oc, oc) - radius * radius;
-}
-
-static double	nearest_t(double a, double b, double disc)
-{
-	double	sqrt_disc;
-	double	t;
-
-	sqrt_disc = sqrt(disc);
-	t = (-b - sqrt_disc) / (2.0 * a);
-	if (t > EPSILON)
-		return (t);
-	t = (-b + sqrt_disc) / (2.0 * a);
-	if (t > EPSILON)
-		return (t);
-	return (-1.0);
-}
-
-static double	find_intersection_t(t_ray ray, t_sphere *sp)
-{
-	double	a;
-	double	b;
-	double	c;
-	double	disc;
-
-	a = vec3_dot(ray.direction, ray.direction);
-	get_quadratic_coeffs(ray, sp, &b, &c);
-	disc = b * b - 4.0 * a * c;
-	if (disc < 0.0)
+	oc = vec3_sub(ray.origin, c->sp->center);
+	q.a = vec3_dot(ray.direction, ray.direction);
+	q.b = 2.0 * vec3_dot(oc, ray.direction);
+	q.c = vec3_dot(oc, oc) - c->radius * c->radius;
+	q.disc = q.b * q.b - 4.0 * q.a * q.c;
+	if (q.disc < 0.0)
 		return (-1.0);
-	return (nearest_t(a, b, disc));
-}
-
-static void	calculate_hit_details(t_ray ray, t_sphere *sp, t_hit *hit, double t)
-{
-	t_vec3	point;
-	t_vec3	normal;
-
-	hit->distance = t;
-	point = vec3_add(ray.origin, vec3_mul(ray.direction, t));
-	normal = vec3_normalize(vec3_sub(point, sp->center));
-	hit->normal = front_normal(normal, ray.direction);
+	quad_roots(&q, &t0, &t1);
+	if (t0 > EPSILON)
+		return (t0);
+	if (t1 > EPSILON)
+		return (t1);
+	return (-1.0);
 }
 
 int	calculate_sphere_hit(t_ray ray, t_sphere *sp, t_hit *hit)
 {
-	double	t;
+	t_sp_ctx	c;
+	double		t;
+	t_vec3		point;
+	t_vec3		normal;
 
 	if (!sp || !hit)
 		return (0);
-	t = find_intersection_t(ray, sp);
+	c.sp = sp;
+	c.radius = sp->diameter * 0.5;
+	t = find_sphere_hit_t(ray, &c);
 	if (t <= EPSILON)
 		return (0);
-	calculate_hit_details(ray, sp, hit, t);
+	hit->distance = t;
+	point = vec3_add(ray.origin, vec3_mul(ray.direction, t));
+	normal = vec3_normalize(vec3_sub(point, c.sp->center));
+	hit->normal = front_normal(normal, ray.direction);
 	return (1);
 }
