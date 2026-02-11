@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 20:00:00 by kinamura          #+#    #+#             */
-/*   Updated: 2026/02/10 16:42:06 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/11 21:02:12 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	count_objects(t_obj *objects)
 {
-	int			count;
+	int		count;
 	t_obj	*obj;
 
 	count = 0;
@@ -132,13 +132,20 @@ static void	handle_object_keys(int keycode, t_ctx *ctx)
 		resize_object(objs, idx, SIZE_STEP, 1);
 }
 
-void	process_key_input(int keycode, t_ctx *ctx)
+int	handle_key_input(int keycode, t_ctx *ctx)
 {
-	handle_mode_switch(keycode, ctx);
-	if (ctx->edit_mode == MODE_CAMERA)
-		handle_camera_keys(keycode, ctx);
-	else if (ctx->edit_mode == MODE_LIGHT)
-		handle_light_keys(keycode, ctx);
-	else if (ctx->edit_mode == MODE_OBJECT)
-		handle_object_keys(keycode, ctx);
+	if (keycode == ESC_KEY)
+		close_window(ctx);
+	else
+	{
+		handle_mode_switch(keycode, ctx);
+		if (ctx->edit_mode == MODE_CAMERA)
+			handle_camera_keys(keycode, ctx);
+		else if (ctx->edit_mode == MODE_LIGHT)
+			handle_light_keys(keycode, ctx);
+		else if (ctx->edit_mode == MODE_OBJECT)
+			handle_object_keys(keycode, ctx);
+		re_render(ctx);
+	}
+	return (0);
 }

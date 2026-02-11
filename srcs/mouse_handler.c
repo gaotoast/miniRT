@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 16:15:37 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/10 16:15:53 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/11 21:05:16 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,11 @@ static void	handle_mouse_resize(int button, t_ctx *ctx, double step)
 	}
 }
 
-void	process_mouse_input(int button, t_ctx *ctx)
+int	handle_mouse_input(int button, int x, int y, t_ctx *ctx)
 {
+	(void)x;
+	(void)y;
 	handle_mouse_resize(button, ctx, FOV_STEP);
+	re_render(ctx);
+	return (0);
 }

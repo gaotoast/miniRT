@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 13:37:02 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/10 23:37:57 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/11 21:04:30 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ int		register_object(t_obj **objects, t_obj_type type, void *obj);
 // mlx
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 void	run_mlx(t_ctx *ctx);
+int		close_window(t_ctx *ctx);
+void	re_render(t_ctx *ctx);
 
 // render
 void	render_scene(t_ctx *ctx);
@@ -73,8 +75,10 @@ void	resize_object(t_obj *objects, int index, double delta, int h_mode);
 int		count_objects(t_obj *objects);
 
 // key_handler
-void	process_key_input(int keycode, t_ctx *ctx);
-void	process_mouse_input(int button, t_ctx *ctx);
+int		handle_key_input(int keycode, t_ctx *ctx);
+
+// mouse handler
+int		handle_mouse_input(int button, int x, int y, t_ctx *ctx);
 
 // ray
 int		calculate_sphere_hit(t_ray ray, t_sphere *sp, t_hit *hit);
