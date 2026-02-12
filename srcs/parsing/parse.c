@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kinamura <kinamura@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 19:04:24 by stakada           #+#    #+#             */
-/*   Updated: 2026/01/10 19:07:35 by kinamura         ###   ########.fr       */
+/*   Updated: 2026/02/12 16:48:00 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ static int	parse_line(char *line, t_scene *scene, int *read_flags)
 		return (-1);
 	if (dispatch_parse(tokens, scene, read_flags) < 0)
 	{
-		free_2d_array(tokens);
+		ft_free_array2((void **)tokens);
 		return (-1);
 	}
-	free_2d_array(tokens);
+	ft_free_array2((void **)tokens);
 	return (0);
 }
 
