@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 21:12:25 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/11 22:29:35 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/12 21:42:47 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		parse_sphere(char **elems, t_obj **objects, int *read_flags);
 int		parse_plane(char **elems, t_obj **objects, int *read_flags);
 int		parse_cylinder(char **elems, t_obj **objects, int *read_flags);
 
-int		get_double(char *str, double *n);
+int		get_double(const char *str, double *num, char **endptr);
 int		parse_colors(char *str, t_color *color);
 int		parse_vec3(char *str, t_vec3 *vec);
 
