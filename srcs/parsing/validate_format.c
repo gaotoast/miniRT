@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 20:51:09 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/12 16:48:01 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/12 16:55:55 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	is_valid_num_len(const char *str, size_t len)
 	i = 0;
 	if (str[0] == '+' || str[0] == '-')
 		i++;
-	while (i < len && str[i] != '\n')
+	while (i < len)
 	{
 		if (str[i] == '.')
 			dot_count++;

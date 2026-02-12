@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 13:13:12 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/12 16:47:59 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/12 17:08:08 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	parse_colors(char *str, t_color *color)
 		return (-1);
 	if (get_int(p, &color->green, &p) < 0 || *p++ != ',')
 		return (-1);
-	if (get_int(p, &color->blue, &p) < 0 || (*p && *p != '\n'))
+	if (get_int(p, &color->blue, &p) < 0 || *p)
 		return (-1);
 	return (0);
 }
@@ -62,7 +62,7 @@ int	parse_vec3(char *str, t_vec3 *vec)
 		return (-1);
 	if (get_double(p, &vec->y, &p) < 0 || *p++ != ',')
 		return (-1);
-	if (get_double(p, &vec->z, &p) < 0 || (*p && *p != '\n'))
+	if (get_double(p, &vec->z, &p) < 0 || *p)
 		return (-1);
 	return (0);
 }

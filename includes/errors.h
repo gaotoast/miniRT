@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 19:42:02 by stakada           #+#    #+#             */
-/*   Updated: 2025/10/21 12:38:46 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/12 17:09:45 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # define ERR_MSG_FILE "File not found or cannot be accessed"
 
 /* Format errors */
+# define ERR_MSG_LINE "Invalid line: whitespace only"
 # define ERR_MSG_IDENT "Invalid identifier: %s"
 # define ERR_MSG_DUP_IDENT "Duplicated identifier: %s"
 # define ERR_MSG_ELEM_COUNT "%s: Invalid element count"
