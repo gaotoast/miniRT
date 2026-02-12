@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 15:53:26 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/10 16:40:36 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/12 17:14:54 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ static char	*check_cylinder_format(char **elems, t_cylinder *cylinder)
 		return (ERR_MSG_ELEM_FORMAT);
 	if (!is_valid_csv(elems[1]) || parse_vec3(elems[1], &(cylinder->axis)) < 0)
 		return (ERR_MSG_ELEM_FORMAT);
-	if (!is_valid_num(elems[2]) || get_double(elems[2],
-			&(cylinder->diameter)) < 0)
+	if (!is_valid_num(elems[2]) || get_double(elems[2], &(cylinder->diameter),
+			NULL) < 0)
 		return (ERR_MSG_ELEM_FORMAT);
-	if (!is_valid_num(elems[3]) || get_double(elems[3],
-			&(cylinder->height)) < 0)
+	if (!is_valid_num(elems[3]) || get_double(elems[3], &(cylinder->height),
+			NULL) < 0)
 		return (ERR_MSG_ELEM_FORMAT);
 	if (!is_valid_csv(elems[4]) || parse_colors(elems[4],
 			&(cylinder->color)) < 0)

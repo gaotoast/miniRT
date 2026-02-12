@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 14:09:37 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/10 16:40:36 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/12 17:15:02 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ static char	*check_sphere_format(char **elems, t_sphere *sphere)
 		return (ERR_MSG_ELEM_COUNT);
 	if (!is_valid_csv(elems[0]) || parse_vec3(elems[0], &(sphere->center)) < 0)
 		return (ERR_MSG_ELEM_FORMAT);
-	if (!is_valid_num(elems[1]) || get_double(elems[1],
-			&(sphere->diameter)) < 0)
+	if (!is_valid_num(elems[1]) || get_double(elems[1], &(sphere->diameter),
+			NULL) < 0)
 		return (ERR_MSG_ELEM_FORMAT);
 	if (!is_valid_csv(elems[2]) || parse_colors(elems[2], &(sphere->color)) < 0)
 		return (ERR_MSG_ELEM_FORMAT);

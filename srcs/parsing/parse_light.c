@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 14:06:17 by stakada           #+#    #+#             */
-/*   Updated: 2025/08/28 22:24:59 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/12 16:47:55 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ static char	*check_light_format(char **elems, t_light *light, int read_flags)
 		return (ERR_MSG_ELEM_COUNT);
 	if (!is_valid_csv(elems[0]) || parse_vec3(elems[0], &(light->position)) < 0)
 		return (ERR_MSG_ELEM_FORMAT);
-	if (!is_valid_num(elems[1]) || get_double(elems[1],
-			&(light->brightness)) < 0)
+	if (!is_valid_num(elems[1]) || get_double(elems[1], &(light->brightness),
+			NULL) < 0)
 		return (ERR_MSG_ELEM_FORMAT);
 	if (!is_valid_csv(elems[2]) || parse_colors(elems[2], &(light->color)) < 0)
 		return (ERR_MSG_ELEM_FORMAT);

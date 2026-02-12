@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 13:37:02 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/11 22:26:53 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/12 17:14:13 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ int		clamp_color(double value);
 void	print_error(char *msg, ...);
 
 // free
-void	free_2d_array(char **array);
 void	free_scene(t_scene *scene);
 void	free_ctx(t_ctx *ctx);
 

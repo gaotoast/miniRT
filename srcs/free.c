@@ -6,26 +6,11 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 19:17:57 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/10 16:42:24 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/12 17:14:21 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
-
-void	free_2d_array(char **array)
-{
-	int	i;
-
-	if (!array)
-		return ;
-	i = 0;
-	while (array[i])
-	{
-		free(array[i]);
-		i++;
-	}
-	free(array);
-}
 
 void	free_scene(t_scene *scene)
 {
