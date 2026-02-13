@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 13:37:02 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/13 18:57:05 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/13 19:02:49 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	free_ctx(t_ctx *ctx);
 
 // TODO: delete debug statement
 // debug
+void	print_context(t_ctx *ctx);
 void	print_scene(t_scene *scene);
 void	print_objects(t_obj *objects);
 void	print_vec3(const char *prefix, t_vec3 vec);

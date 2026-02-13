@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 22:15:34 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/10 15:38:10 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/13 19:04:24 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	print_scene(t_scene *scene)
 		printf("Error: Scene is NULL\n");
 		return ;
 	}
-	printf("\n===== Scene Information =====\n\n");
 	print_ambient(scene->ambient);
 	printf("\n");
 	print_camera(scene->camera);
@@ -50,5 +49,4 @@ void	print_scene(t_scene *scene)
 	print_light(scene->light);
 	printf("\n");
 	print_objects(scene->objects);
-	printf("\n==========================\n\n");
 }
