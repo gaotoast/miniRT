@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 15:46:35 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/13 21:24:31 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/14 00:07:15 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static double	calculate_diffuse_lighting(t_hit *hit, t_light light,
 	double	light_distance;
 	double	dot;
 
-	if (light.brightness <= 0.0)
+	if (!scene || !hit || light.brightness <= 0.0)
 		return (0.0);
 	light_dir = vec3_sub(light.position, hit->point);
 	light_distance = vec3_length(light_dir);
@@ -58,7 +58,7 @@ int	trace_ray(t_scene *scene, t_ray ray)
 	if (!scene)
 		return (0);
 	if (!find_nearest_hit(scene, ray, &hit))
-		return (get_background_color(scene));
+		return (background_color(scene->ambient));
 	diffuse = calculate_diffuse_lighting(&hit, scene->light, scene);
-	return (shade_color(scene, hit.color, diffuse));
+	return (shade_color(scene->ambient, scene->light, hit.color, diffuse));
 }

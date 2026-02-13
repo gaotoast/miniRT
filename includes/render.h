@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 21:15:08 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/13 21:34:52 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/14 00:06:22 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,9 @@ double					find_plane_hit_t(t_ray ray, t_vec3 point,
 							t_vec3 normal);
 
 // shading
-int						get_background_color(t_scene *scene);
-int						shade_color(t_scene *scene, t_rgb object_color,
-							double diffuse);
+int						background_color(t_ambient ambient);
+int						shade_color(t_ambient ambient, t_light light,
+							t_rgb object_color, double diffuse);
 
 // utils
 void					quad_roots(t_quad *q, double *t0, double *t1);
