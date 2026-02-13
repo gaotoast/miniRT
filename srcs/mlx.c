@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 11:52:01 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/11 21:01:33 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/13 18:56:25 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ void	run_mlx(t_ctx *ctx)
 	render_scene(ctx);
 	mlx_put_image_to_window(ctx->mlx, ctx->win, ctx->img->img, 0, 0);
 	mlx_hook(ctx->win, 2, 1L << 0, handle_key_input, ctx);
-	mlx_hook(ctx->win, 4, 1L << 2, handle_mouse_input, ctx);
 	mlx_hook(ctx->win, 17, 1L << 5, close_window, ctx);
 	mlx_loop(ctx->mlx);
 }

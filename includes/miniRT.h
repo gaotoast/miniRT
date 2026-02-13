@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 13:37:02 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/13 18:38:24 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/13 18:57:05 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,13 @@ void	re_render(t_ctx *ctx);
 void	translate_target(t_ctx *ctx, t_vec3 delta);
 void	rotate_target(t_ctx *ctx, t_vec3 axis, double angle);
 void	adjust_target(t_ctx *ctx, double delta, int height_mode);
-int		count_objects(t_obj *objects);
 
 // key_handler
 int		handle_key_input(int keycode, t_ctx *ctx);
 
-// mouse handler
-int		handle_mouse_input(int button, int x, int y, t_ctx *ctx);
-
 // utils
 int		count_array(char **array);
+int		count_objects(t_obj *objects);
 double	ft_strtod(const char *nptr, char **endptr);
 t_vec3	vec3_rotate(t_vec3 v, t_vec3 axis, double angle_deg);
 t_vec3	front_normal(t_vec3 normal, t_vec3 ray_dir);

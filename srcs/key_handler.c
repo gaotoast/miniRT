@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 20:00:00 by kinamura          #+#    #+#             */
-/*   Updated: 2026/02/13 18:40:39 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/13 18:56:34 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,13 @@ int	handle_key_input(int keycode, t_ctx *ctx)
 		adjust_target(ctx, step, 0);
 	else if (keycode == KEY_MINUS)
 		adjust_target(ctx, -step, 0);
-	else if (keycode == KEY_H && ctx->edit_mode == MODE_OBJECT)
-		adjust_target(ctx, SIZE_STEP, 1);
+	else if (ctx->edit_mode == MODE_OBJECT)
+	{
+		if (keycode == KEY_D)
+			adjust_target(ctx, -SIZE_STEP, 0);
+		else if (keycode == KEY_H)
+			adjust_target(ctx, SIZE_STEP, 1);
+	}
 	re_render(ctx);
 	return (0);
 }
