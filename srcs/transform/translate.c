@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 16:18:14 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/13 19:15:07 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/13 23:45:26 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 static t_vec3	*get_obj_position(t_obj *obj)
 {
+	if (!obj || !obj->obj_data)
+		return (NULL);
 	if (obj->type == SPHERE)
 		return (&((t_sphere *)obj->obj_data)->center);
 	else if (obj->type == PLANE)
@@ -25,6 +27,8 @@ static t_vec3	*get_obj_position(t_obj *obj)
 
 static t_vec3	*get_target_position(t_ctx *ctx)
 {
+	if (!ctx)
+		return (NULL);
 	if (ctx->edit_mode == MODE_CAMERA)
 		return (&ctx->scene->camera.position);
 	else if (ctx->edit_mode == MODE_LIGHT)

@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 13:37:02 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/13 21:30:54 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/13 23:37:26 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	re_render(t_ctx *ctx);
 // transform
 void	translate_target(t_ctx *ctx, t_vec3 delta);
 void	rotate_target(t_ctx *ctx, t_vec3 axis, double angle);
-void	adjust_target(t_ctx *ctx, double delta, int height_mode);
+void	adjust_target(t_ctx *ctx, int sign, int height_mode);
 
 // key_handler
 int		handle_key_input(int keycode, t_ctx *ctx);

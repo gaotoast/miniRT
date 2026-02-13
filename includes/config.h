@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 21:44:50 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/12 21:48:20 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/13 22:58:41 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@
 #  define KEY_PLUS 24
 #  define KEY_MINUS 27
 #  define KEY_H 4
+#  define KEY_J 38
 # else
 #  include <X11/keysym.h>
 #  define ESC_KEY XK_Escape
@@ -58,6 +59,7 @@
 #  define KEY_PLUS XK_plus
 #  define KEY_MINUS XK_minus
 #  define KEY_H XK_h
+#  define KEY_J XK_j
 # endif
 
 # define MOVE_STEP 1.0
@@ -65,7 +67,10 @@
 # define SIZE_STEP 0.5
 # define FOV_STEP 5.0
 # define BRIGHT_STEP 0.1
+
 # define MIN_SIZE 0.1
+# define MIN_FOV 0.0
+# define MAX_FOV 180.0
 
 # define MOUSE_LEFT 1
 # define MOUSE_RIGHT 2

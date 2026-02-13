@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 16:19:29 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/13 19:15:00 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/13 23:45:35 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 static t_vec3	*get_obj_direction(t_obj *obj)
 {
+	if (!obj || !obj->obj_data)
+		return (NULL);
 	if (obj->type == PLANE)
 		return (&((t_plane *)obj->obj_data)->normal);
 	else if (obj->type == CYLINDER)
@@ -23,6 +25,8 @@ static t_vec3	*get_obj_direction(t_obj *obj)
 
 static t_vec3	*get_target_direction(t_ctx *ctx)
 {
+	if (!ctx)
+		return (NULL);
 	if (ctx->edit_mode == MODE_CAMERA)
 		return (&ctx->scene->camera.direction);
 	else if (ctx->edit_mode == MODE_LIGHT)

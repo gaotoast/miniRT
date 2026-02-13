@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 16:19:58 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/13 19:08:27 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/13 23:44:56 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 static void	add_clamped(double *value, double delta, double min, double max)
 {
+	if (!value)
+		return ;
 	*value += delta;
 	if (*value < min)
 		*value = min;
@@ -23,6 +25,8 @@ static void	add_clamped(double *value, double delta, double min, double max)
 
 static double	*get_obj_size(t_obj *obj, int height_mode)
 {
+	if (!obj || !obj->obj_data)
+		return (NULL);
 	if (obj->type == SPHERE)
 		return (&((t_sphere *)obj->obj_data)->diameter);
 	else if (obj->type == CYLINDER)
@@ -34,17 +38,22 @@ static double	*get_obj_size(t_obj *obj, int height_mode)
 	return (NULL);
 }
 
-void	adjust_target(t_ctx *ctx, double delta, int height_mode)
+void	adjust_target(t_ctx *ctx, int sign, int height_mode)
 {
 	double	*target;
 
 	if (ctx->edit_mode == MODE_CAMERA)
-		return (add_clamped(&ctx->scene->camera.fov_deg, delta, 1.0, 179.0));
-	else if (ctx->edit_mode == MODE_LIGHT)
-		return (add_clamped(&ctx->scene->light.brightness, delta, 0.0, 1.0));
-	if (!ctx->selected_object)
+	{
+		add_clamped(&ctx->scene->camera.fov_deg, sign * FOV_STEP, 1.0, 179.0);
 		return ;
+	}
+	else if (ctx->edit_mode == MODE_LIGHT)
+	{
+		add_clamped(&ctx->scene->light.brightness, sign * BRIGHT_STEP, 0.0,
+			1.0);
+		return ;
+	}
 	target = get_obj_size(ctx->selected_object, height_mode);
 	if (target)
-		add_clamped(target, delta, MIN_SIZE, 0);
+		add_clamped(target, sign * SIZE_STEP, MIN_SIZE, 0);
 }
