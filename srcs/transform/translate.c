@@ -6,47 +6,49 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 16:18:14 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/10 16:43:51 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/13 18:39:59 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-void	translate_camera(t_camera *camera, t_vec3 delta)
-{
-	camera->position = vec3_add(camera->position, delta);
-}
-
-void	translate_light(t_light *light, t_vec3 delta)
-{
-	light->position = vec3_add(light->position, delta);
-}
-
-static void	translate_object_by_type(t_obj *obj, t_vec3 delta)
+static t_vec3	*get_obj_position(t_obj *obj)
 {
 	if (obj->type == SPHERE)
-		((t_sphere *)obj->obj_data)->center = vec3_add(((t_sphere *)obj->obj_data)->center,
-				delta);
+		return (&((t_sphere *)obj->obj_data)->center);
 	else if (obj->type == PLANE)
-		((t_plane *)obj->obj_data)->point = vec3_add(((t_plane *)obj->obj_data)->point,
-				delta);
+		return (&((t_plane *)obj->obj_data)->point);
 	else if (obj->type == CYLINDER)
-		((t_cylinder *)obj->obj_data)->center = vec3_add(((t_cylinder *)obj->obj_data)->center,
-				delta);
+		return (&((t_cylinder *)obj->obj_data)->center);
+	return (NULL);
 }
 
-void	translate_object(t_obj *objects, int index, t_vec3 delta)
+static t_vec3	*get_target_position(t_ctx *ctx)
 {
 	t_obj	*obj;
 	int		i;
 
-	obj = objects;
+	if (ctx->edit_mode == MODE_CAMERA)
+		return (&ctx->scene->camera.position);
+	else if (ctx->edit_mode == MODE_LIGHT)
+		return (&ctx->scene->light.position);
+	obj = ctx->scene->objects;
 	i = 0;
-	while (obj && i < index)
+	while (obj && i < ctx->selected_obj)
 	{
 		obj = obj->next;
 		i++;
 	}
 	if (obj)
-		translate_object_by_type(obj, delta);
+		return (get_obj_position(obj));
+	return (NULL);
+}
+
+void	translate_target(t_ctx *ctx, t_vec3 delta)
+{
+	t_vec3	*pos;
+
+	pos = get_target_position(ctx);
+	if (pos)
+		*pos = vec3_add(*pos, delta);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   count_array.c                                      :+:      :+:    :+:   */
+/*   count.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kinamura <kinamura@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 20:45:18 by stakada           #+#    #+#             */
-/*   Updated: 2025/12/30 16:04:23 by kinamura         ###   ########.fr       */
+/*   Updated: 2026/02/13 18:40:57 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,19 @@ int	count_array(char **array)
 	while (array[cnt])
 		cnt++;
 	return (cnt);
+}
+
+int	count_objects(t_obj *objects)
+{
+	int		count;
+	t_obj	*obj;
+
+	count = 0;
+	obj = objects;
+	while (obj)
+	{
+		count++;
+		obj = obj->next;
+	}
+	return (count);
 }

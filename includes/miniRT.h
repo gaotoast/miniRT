@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 13:37:02 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/12 17:14:13 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/13 18:38:24 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,9 @@ int		close_window(t_ctx *ctx);
 void	re_render(t_ctx *ctx);
 
 // transform
-void	translate_camera(t_camera *camera, t_vec3 delta);
-void	rotate_camera(t_camera *camera, t_vec3 axis, double angle);
-void	adjust_fov(t_camera *camera, double delta);
-void	translate_light(t_light *light, t_vec3 delta);
-void	adjust_brightness(t_light *light, double delta);
-void	translate_object(t_obj *objects, int index, t_vec3 delta);
-void	rotate_object(t_obj *objects, int index, t_vec3 axis, double angle);
-void	resize_object(t_obj *objects, int index, double delta, int h_mode);
+void	translate_target(t_ctx *ctx, t_vec3 delta);
+void	rotate_target(t_ctx *ctx, t_vec3 axis, double angle);
+void	adjust_target(t_ctx *ctx, double delta, int height_mode);
 int		count_objects(t_obj *objects);
 
 // key_handler

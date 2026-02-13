@@ -6,48 +6,47 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 16:19:29 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/10 16:43:49 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/13 18:39:57 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-void	rotate_camera(t_camera *camera, t_vec3 axis, double angle)
+static t_vec3	*get_obj_direction(t_obj *obj)
 {
-	camera->direction = vec3_normalize(vec3_rotate(camera->direction, axis,
-				angle));
-}
-
-static void	rotate_object_by_type(t_obj *obj, t_vec3 axis, double angle)
-{
-	t_plane		*plane;
-	t_cylinder	*cylinder;
-
 	if (obj->type == PLANE)
-	{
-		plane = (t_plane *)obj->obj_data;
-		plane->normal = vec3_normalize(vec3_rotate(plane->normal, axis, angle));
-	}
+		return (&((t_plane *)obj->obj_data)->normal);
 	else if (obj->type == CYLINDER)
-	{
-		cylinder = (t_cylinder *)obj->obj_data;
-		cylinder->axis = vec3_normalize(vec3_rotate(cylinder->axis, axis,
-					angle));
-	}
+		return (&((t_cylinder *)obj->obj_data)->axis);
+	return (NULL);
 }
 
-void	rotate_object(t_obj *objects, int index, t_vec3 axis, double angle)
+static t_vec3	*get_target_direction(t_ctx *ctx)
 {
 	t_obj	*obj;
 	int		i;
 
-	obj = objects;
+	if (ctx->edit_mode == MODE_CAMERA)
+		return (&ctx->scene->camera.direction);
+	else if (ctx->edit_mode == MODE_LIGHT)
+		return (NULL);
+	obj = ctx->scene->objects;
 	i = 0;
-	while (obj && i < index)
+	while (obj && i < ctx->selected_obj)
 	{
 		obj = obj->next;
 		i++;
 	}
 	if (obj)
-		rotate_object_by_type(obj, axis, angle);
+		return (get_obj_direction(obj));
+	return (NULL);
+}
+
+void	rotate_target(t_ctx *ctx, t_vec3 axis, double angle)
+{
+	t_vec3	*dir;
+
+	dir = get_target_direction(ctx);
+	if (dir)
+		*dir = vec3_normalize(vec3_rotate(*dir, axis, angle));
 }

@@ -6,54 +6,52 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 16:19:58 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/10 16:43:50 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/13 18:39:56 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-static void	resize_object_by_type(t_obj *obj, double delta, int height_mode)
+static void	add_clamped(double *value, double delta, double min, double max)
 {
-	t_sphere	*sphere;
-	t_cylinder	*cylinder;
-
-	if (obj->type == SPHERE)
-	{
-		sphere = (t_sphere *)obj->obj_data;
-		sphere->diameter += delta;
-		if (sphere->diameter < 0.1)
-			sphere->diameter = 0.1;
-	}
-	else if (obj->type == CYLINDER)
-	{
-		cylinder = (t_cylinder *)obj->obj_data;
-		if (height_mode)
-		{
-			cylinder->height += delta;
-			if (cylinder->height < 0.1)
-				cylinder->height = 0.1;
-		}
-		else
-		{
-			cylinder->diameter += delta;
-			if (cylinder->diameter < 0.1)
-				cylinder->diameter = 0.1;
-		}
-	}
+	*value += delta;
+	if (*value < min)
+		*value = min;
+	if (max > 0 && *value > max)
+		*value = max;
 }
 
-void	resize_object(t_obj *objects, int index, double delta, int h_mode)
+static double	*get_obj_size(t_obj *obj, int height_mode)
+{
+	if (obj->type == SPHERE)
+		return (&((t_sphere *)obj->obj_data)->diameter);
+	else if (obj->type == CYLINDER)
+	{
+		if (height_mode)
+			return (&((t_cylinder *)obj->obj_data)->height);
+		return (&((t_cylinder *)obj->obj_data)->diameter);
+	}
+	return (NULL);
+}
+
+void	adjust_target(t_ctx *ctx, double delta, int height_mode)
 {
 	t_obj	*obj;
+	double	*target;
 	int		i;
 
-	obj = objects;
+	if (ctx->edit_mode == MODE_CAMERA)
+		return (add_clamped(&ctx->scene->camera.fov_deg, delta, 1.0, 179.0));
+	else if (ctx->edit_mode == MODE_LIGHT)
+		return (add_clamped(&ctx->scene->light.brightness, delta, 0.0, 1.0));
+	obj = ctx->scene->objects;
 	i = 0;
-	while (obj && i < index)
+	while (obj && i < ctx->selected_obj)
 	{
 		obj = obj->next;
 		i++;
 	}
-	if (obj)
-		resize_object_by_type(obj, delta, h_mode);
+	target = get_obj_size(obj, height_mode);
+	if (target)
+		add_clamped(target, delta, MIN_SIZE, 0);
 }

@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 21:44:50 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/09 16:56:31 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/12 21:48:20 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@
 # define SIZE_STEP 0.5
 # define FOV_STEP 5.0
 # define BRIGHT_STEP 0.1
+# define MIN_SIZE 0.1
 
 # define MOUSE_LEFT 1
 # define MOUSE_RIGHT 2
