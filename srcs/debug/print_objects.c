@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 22:14:33 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/10 16:43:07 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/13 18:42:18 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ static void	print_cylinder(t_cylinder *cylinder)
 	print_color("  Color", cylinder->color);
 }
 
-void	print_objects(t_obj*objects)
+void	print_objects(t_obj *objects)
 {
 	t_obj	*current;
-	int			count;
+	int		count;
 
 	current = objects;
 	count = 0;
