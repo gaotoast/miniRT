@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 00:47:58 by kinamura          #+#    #+#             */
-/*   Updated: 2026/02/13 19:00:56 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/13 20:08:24 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static t_vec3	get_ray_direction(t_camera_frame *frame, int x, int y)
 	return (vec3_normalize(dir));
 }
 
-// TODO: delete debug statement (print_scene)
+// TODO: delete debug statement (print_context)
 void	render_scene(t_ctx *ctx)
 {
 	t_camera_frame	frame;

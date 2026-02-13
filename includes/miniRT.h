@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 13:37:02 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/13 19:02:49 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/13 20:08:45 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	print_error(char *msg, ...);
 void	free_scene(t_scene *scene);
 void	free_ctx(t_ctx *ctx);
 
-// TODO: delete debug statement
+// TODO: delete debug statement (print_*)
 // debug
 void	print_context(t_ctx *ctx);
 void	print_scene(t_scene *scene);
