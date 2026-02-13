@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init_color.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kinamura <kinamura@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 17:20:58 by kinamura          #+#    #+#             */
-/*   Updated: 2025/12/29 17:23:09 by kinamura         ###   ########.fr       */
+/*   Updated: 2026/02/13 21:35:48 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_color	*init_color(t_color *new, int color)
+t_trgb	*init_color(t_trgb *new, int color)
 {
 	if (!new)
 		return (NULL);

@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 22:25:25 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/13 19:08:27 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/13 21:29:53 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 typedef struct s_ambient
 {
 	double			ratio;
-	t_color			color;
+	t_rgb			color;
 }					t_ambient;
 
 typedef struct s_camera
@@ -32,21 +32,21 @@ typedef struct s_light
 {
 	t_vec3			position;
 	double			brightness;
-	t_color			color;
+	t_rgb			color;
 }					t_light;
 
 typedef struct s_sphere
 {
 	t_vec3			center;
 	double			diameter;
-	t_color			color;
+	t_rgb			color;
 }					t_sphere;
 
 typedef struct s_plane
 {
 	t_vec3			point;
 	t_vec3			normal;
-	t_color			color;
+	t_rgb			color;
 }					t_plane;
 
 typedef struct s_cylinder
@@ -55,7 +55,7 @@ typedef struct s_cylinder
 	t_vec3			axis;
 	double			diameter;
 	double			height;
-	t_color			color;
+	t_rgb			color;
 }					t_cylinder;
 
 typedef enum e_obj_type

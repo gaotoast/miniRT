@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 21:15:08 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/11 22:29:35 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/13 21:34:52 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct s_hit
 	t_obj				*object;
 	t_vec3				point;
 	t_vec3				normal;
-	t_color				color;
+	t_rgb				color;
 	double				distance;
 }						t_hit;
 
@@ -78,7 +78,7 @@ double					find_plane_hit_t(t_ray ray, t_vec3 point,
 
 // shading
 int						get_background_color(t_scene *scene);
-int						shade_color(t_scene *scene, t_color object_color,
+int						shade_color(t_scene *scene, t_rgb object_color,
 							double diffuse);
 
 // utils

@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 15:46:35 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/10 23:38:17 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/13 21:24:31 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,15 @@ static double	calculate_diffuse_lighting(t_hit *hit, t_light light,
 	double	light_distance;
 	double	dot;
 
+	if (light.brightness <= 0.0)
+		return (0.0);
 	light_dir = vec3_sub(light.position, hit->point);
 	light_distance = vec3_length(light_dir);
 	if (light_distance <= EPSILON)
 		return (0.0);
 	light_dir = vec3_normalize(light_dir);
 	dot = vec3_dot(hit->normal, light_dir);
-	if (dot <= 0.0 || light.brightness <= 0.0)
+	if (dot <= 0.0)
 		return (0.0);
 	if (is_in_shadow(scene, hit, light_dir, light_distance))
 		return (0.0);

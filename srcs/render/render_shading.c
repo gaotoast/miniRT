@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 00:41:16 by kinamura          #+#    #+#             */
-/*   Updated: 2026/02/10 15:50:13 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/13 21:38:06 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static double	channel_intensity(double ambient, double light, double diffuse)
 	return (clamp01(ambient + light * diffuse));
 }
 
-int	shade_color(t_scene *scene, t_color object_color, double diffuse)
+int	shade_color(t_scene *scene, t_rgb object_color, double diffuse)
 {
 	double	ambient_r;
 	double	ambient_g;

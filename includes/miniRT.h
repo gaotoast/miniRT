@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 13:37:02 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/13 20:08:45 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/13 21:30:54 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,6 @@ void	print_context(t_ctx *ctx);
 void	print_scene(t_scene *scene);
 void	print_objects(t_obj *objects);
 void	print_vec3(const char *prefix, t_vec3 vec);
-void	print_color(const char *prefix, t_color color);
+void	print_color(const char *prefix, t_rgb color);
 
 #endif

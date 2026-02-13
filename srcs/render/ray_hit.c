@@ -6,15 +6,15 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 18:44:45 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/11 20:36:00 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/13 21:32:33 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-static t_color	get_object_color(t_obj *object)
+static t_rgb	get_object_color(t_obj *object)
 {
-	t_color	color;
+	t_rgb	color;
 
 	if (object->type == SPHERE)
 		return (((t_sphere *)object->obj_data)->color);
