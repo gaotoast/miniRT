@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 19:26:43 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/11 22:44:04 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/13 19:08:27 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ t_ctx	*init_ctx(char *filename)
 		return (NULL);
 	}
 	ctx->edit_mode = MODE_CAMERA;
-	ctx->selected_obj = 0;
+	ctx->selected_object = ctx->scene->objects;
 	return (ctx);
 }

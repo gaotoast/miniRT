@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 22:25:25 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/11 22:29:35 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/13 19:08:27 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ typedef struct s_ctx
 	t_img			*img;
 	t_scene			*scene;
 	t_edit_mode		edit_mode;
-	int				selected_obj;
+	t_obj			*selected_object;
 }					t_ctx;
 
 #endif

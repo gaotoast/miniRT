@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 20:00:00 by kinamura          #+#    #+#             */
-/*   Updated: 2026/02/13 18:56:34 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/13 19:09:09 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@ static void	handle_mode_switch(int keycode, t_ctx *ctx)
 		ctx->edit_mode = MODE_OBJECT;
 	else if (keycode == KEY_TAB && ctx->edit_mode == MODE_OBJECT)
 	{
-		ctx->selected_obj++;
-		if (ctx->selected_obj >= count_objects(ctx->scene->objects))
-			ctx->selected_obj = 0;
+		if (ctx->selected_object && ctx->selected_object->next)
+			ctx->selected_object = ctx->selected_object->next;
+		else
+			ctx->selected_object = ctx->scene->objects;
 	}
 }
 

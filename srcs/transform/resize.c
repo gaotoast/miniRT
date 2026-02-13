@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 16:19:58 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/13 18:39:56 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/13 19:08:27 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,22 +36,15 @@ static double	*get_obj_size(t_obj *obj, int height_mode)
 
 void	adjust_target(t_ctx *ctx, double delta, int height_mode)
 {
-	t_obj	*obj;
 	double	*target;
-	int		i;
 
 	if (ctx->edit_mode == MODE_CAMERA)
 		return (add_clamped(&ctx->scene->camera.fov_deg, delta, 1.0, 179.0));
 	else if (ctx->edit_mode == MODE_LIGHT)
 		return (add_clamped(&ctx->scene->light.brightness, delta, 0.0, 1.0));
-	obj = ctx->scene->objects;
-	i = 0;
-	while (obj && i < ctx->selected_obj)
-	{
-		obj = obj->next;
-		i++;
-	}
-	target = get_obj_size(obj, height_mode);
+	if (!ctx->selected_object)
+		return ;
+	target = get_obj_size(ctx->selected_object, height_mode);
 	if (target)
 		add_clamped(target, delta, MIN_SIZE, 0);
 }

@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 16:18:14 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/13 18:39:59 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/13 19:15:07 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,22 +25,12 @@ static t_vec3	*get_obj_position(t_obj *obj)
 
 static t_vec3	*get_target_position(t_ctx *ctx)
 {
-	t_obj	*obj;
-	int		i;
-
 	if (ctx->edit_mode == MODE_CAMERA)
 		return (&ctx->scene->camera.position);
 	else if (ctx->edit_mode == MODE_LIGHT)
 		return (&ctx->scene->light.position);
-	obj = ctx->scene->objects;
-	i = 0;
-	while (obj && i < ctx->selected_obj)
-	{
-		obj = obj->next;
-		i++;
-	}
-	if (obj)
-		return (get_obj_position(obj));
+	if (ctx->selected_object)
+		return (get_obj_position(ctx->selected_object));
 	return (NULL);
 }
 

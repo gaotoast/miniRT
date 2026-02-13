@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 00:47:58 by kinamura          #+#    #+#             */
-/*   Updated: 2026/02/11 22:44:57 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/13 19:00:56 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	render_scene(t_ctx *ctx)
 
 	if (!ctx || !ctx->scene || !ctx->img)
 		return ;
-	print_scene(ctx->scene);
+	print_context(ctx);
 	init_camera_frame(ctx->scene->camera, &frame);
 	y = 0;
 	while (y < WIN_HEIGHT)
