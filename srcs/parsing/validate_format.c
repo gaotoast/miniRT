@@ -6,36 +6,54 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 20:51:09 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/12 16:55:55 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/13 20:52:48 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
+static int	check_char(char c, int *has_dot, int *before_dot, int *after_dot)
+{
+	if (c == '.')
+	{
+		if (*has_dot || !*before_dot)
+			return (INVALID);
+		*has_dot = 1;
+	}
+	else if (ft_isdigit(c))
+	{
+		if (!*has_dot)
+			*before_dot = 1;
+		else
+			*after_dot = 1;
+	}
+	else
+		return (INVALID);
+	return (VALID);
+}
+
 static int	is_valid_num_len(const char *str, size_t len)
 {
 	size_t	i;
-	int		dot_count;
-	int		digit_count;
+	int		has_dot;
+	int		before_dot;
+	int		after_dot;
 
 	if (!str || !*str || len == 0)
 		return (INVALID);
-	dot_count = 0;
-	digit_count = 0;
+	has_dot = 0;
+	before_dot = 0;
+	after_dot = 0;
 	i = 0;
 	if (str[0] == '+' || str[0] == '-')
 		i++;
 	while (i < len)
 	{
-		if (str[i] == '.')
-			dot_count++;
-		else if (ft_isdigit(str[i]))
-			digit_count++;
-		else
+		if (!check_char(str[i], &has_dot, &before_dot, &after_dot))
 			return (INVALID);
 		i++;
 	}
-	if (dot_count > 1 || digit_count == 0)
+	if (!before_dot || (has_dot && !after_dot))
 		return (INVALID);
 	return (VALID);
 }
