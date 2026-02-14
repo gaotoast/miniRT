@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 14:06:17 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/14 21:45:14 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/14 23:35:15 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static char	*check_light_values(t_light light)
 {
-	if (!validate_double(light.brightness, 0.0, 1.0))
+	if (!validate_double_inclusive(light.brightness, 0.0, 1.0))
 		return (ERR_MSG_ELEM_VALUE);
 	if (!validate_colors(light.color))
 		return (ERR_MSG_ELEM_VALUE);
