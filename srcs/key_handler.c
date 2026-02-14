@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 20:00:00 by kinamura          #+#    #+#             */
-/*   Updated: 2026/02/13 23:36:50 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/15 03:13:07 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ static int	get_move_delta(int keycode, t_vec3 *delta)
 	else if (keycode == KEY_S)
 		*delta = vec3(0, -MOVE_STEP, 0);
 	else if (keycode == KEY_A)
-		*delta = vec3(-MOVE_STEP, 0, 0);
-	else if (keycode == KEY_D)
 		*delta = vec3(MOVE_STEP, 0, 0);
+	else if (keycode == KEY_D)
+		*delta = vec3(-MOVE_STEP, 0, 0);
 	else if (keycode == KEY_Q)
 		*delta = vec3(0, 0, -MOVE_STEP);
 	else if (keycode == KEY_E)
@@ -63,12 +63,12 @@ static int	get_rotate_params(int keycode, t_vec3 *axis, double *angle)
 	else if (keycode == KEY_LEFT)
 	{
 		*axis = vec3(0, 1, 0);
-		*angle = -ROTATE_STEP;
+		*angle = ROTATE_STEP;
 	}
 	else if (keycode == KEY_RIGHT)
 	{
 		*axis = vec3(0, 1, 0);
-		*angle = ROTATE_STEP;
+		*angle = -ROTATE_STEP;
 	}
 	else
 		return (0);
