@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 11:52:01 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/13 18:56:25 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/14 21:51:44 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	re_render(t_ctx *ctx)
 void	run_mlx(t_ctx *ctx)
 {
 	ctx->mlx = mlx_init();
-	ctx->win = mlx_new_window(ctx->mlx, WIN_WIDTH, WIN_HEIGHT, "miniRT");
+	ctx->win = mlx_new_window(ctx->mlx, WIN_WIDTH, WIN_HEIGHT, PROGRAM);
 	ctx->img = (t_img *)ft_calloc(1, sizeof(t_img));
 	if (!ctx->img)
 	{
