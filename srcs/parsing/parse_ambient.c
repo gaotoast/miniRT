@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 15:02:48 by stakada           #+#    #+#             */
-/*   Updated: 2025/08/28 22:23:35 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/12 16:47:49 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ static char	*check_ambient_format(char **elems, t_ambient *ambient,
 		return (ERR_MSG_DUP_IDENT);
 	if (count_array(elems) != 2)
 		return (ERR_MSG_ELEM_COUNT);
-	if (!is_valid_num(elems[0]) || get_double(elems[0], &(ambient->ratio)) < 0)
+	if (!is_valid_num(elems[0]) || get_double(elems[0], &(ambient->ratio),
+			NULL) < 0)
 		return (ERR_MSG_ELEM_FORMAT);
 	if (!is_valid_csv(elems[1]) || parse_colors(elems[1],
 			&(ambient->color)) < 0)

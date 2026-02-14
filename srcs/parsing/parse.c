@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kinamura <kinamura@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 19:04:24 by stakada           #+#    #+#             */
-/*   Updated: 2026/01/10 19:07:35 by kinamura         ###   ########.fr       */
+/*   Updated: 2026/02/12 17:09:50 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,7 @@ static int	dispatch_parse(char **tokens, t_scene *scene, int *read_flags)
 		return (parse_cylinder(tokens + 1, &scene->objects, read_flags));
 	else
 	{
-		if (!*ident)
-			print_error(ERR_MSG_IDENT, "empty");
-		else
-			print_error(ERR_MSG_IDENT, ident);
+		print_error(ERR_MSG_IDENT, ident);
 		return (-1);
 	}
 }
@@ -42,24 +39,34 @@ static int	dispatch_parse(char **tokens, t_scene *scene, int *read_flags)
 static int	parse_line(char *line, t_scene *scene, int *read_flags)
 {
 	char	**tokens;
+	size_t	len;
 
 	if (!line || !scene || !read_flags)
 		return (-1);
+	len = ft_strlen(line);
+	if (len > 0 && line[len - 1] == '\n')
+		line[len - 1] = '\0';
 	tokens = ft_split(line, ' ');
 	if (!tokens)
 		return (-1);
-	if (dispatch_parse(tokens, scene, read_flags) < 0)
+	if (!tokens[0])
 	{
-		free_2d_array(tokens);
+		ft_free_array2((void **)tokens);
+		print_error(ERR_MSG_LINE);
 		return (-1);
 	}
-	free_2d_array(tokens);
+	if (dispatch_parse(tokens, scene, read_flags) < 0)
+	{
+		ft_free_array2((void **)tokens);
+		return (-1);
+	}
+	ft_free_array2((void **)tokens);
 	return (0);
 }
 
 static int	is_skippable_line(char *line)
 {
-	if (line[0] == '\n')
+	if (line[0] == '\n' || line[0] == '\0')
 		return (1);
 	return (0);
 }

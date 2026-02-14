@@ -3,72 +3,64 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kinamura <kinamura@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 13:13:12 by stakada           #+#    #+#             */
-/*   Updated: 2025/12/30 14:52:50 by kinamura         ###   ########.fr       */
+/*   Updated: 2026/02/13 20:41:50 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-int	get_double(char *str, double *n)
+static int	get_int(const char *str, int *num, char **endptr)
 {
-	char	*endptr;
+	long long	ret;
 
-	if (!str || !*str || !n)
+	ret = ft_strtol(str, endptr, 10);
+	if (endptr && *endptr && *endptr == str)
 		return (-1);
-	endptr = NULL;
-	*n = ft_strtod(str, &endptr);
-	if (endptr && !(*endptr == '\0' || *endptr == '\n'))
+	if (ret < (long long)INT_MIN || ret > (long long)INT_MAX)
 		return (-1);
+	*num = (int)ret;
 	return (0);
 }
 
-static int	parse_tokens_and_assign(char *str, double *a, double *b, double *c)
+int	get_double(const char *str, double *num, char **endptr)
 {
-	char	*comma1;
-	char	*comma2;
-
-	if (!str)
-		return (-1);
-	comma1 = str;
-	while (*comma1 && *comma1 != ',')
-		comma1++;
-	if (*comma1 != ',')
-		return (-1);
-	*comma1 = '\0';
-	comma2 = comma1 + 1;
-	while (*comma2 && *comma2 != ',')
-		comma2++;
-	if (*comma2 != ',')
-		return (-1);
-	*comma2 = '\0';
-	if (get_double(str, a) < 0 || get_double(comma1 + 1, b) < 0
-		|| get_double(comma2 + 1, c) < 0)
+	*num = ft_strtod(str, endptr);
+	if (endptr && *endptr && *endptr == str)
 		return (-1);
 	return (0);
 }
 
 int	parse_colors(char *str, t_color *color)
 {
-	double	r;
-	double	g;
-	double	b;
+	char	*p;
 
 	if (!str || !color)
 		return (-1);
-	if (parse_tokens_and_assign(str, &r, &g, &b) < 0)
+	p = str;
+	if (get_int(p, &color->red, &p) < 0 || !*p || *p++ != ',')
 		return (-1);
-	color->red = (int)r;
-	color->green = (int)g;
-	color->blue = (int)b;
+	if (get_int(p, &color->green, &p) < 0 || !*p || *p++ != ',')
+		return (-1);
+	if (get_int(p, &color->blue, &p) < 0 || *p)
+		return (-1);
 	return (0);
 }
 
 int	parse_vec3(char *str, t_vec3 *vec)
 {
+	char	*p;
+
 	if (!str || !vec)
 		return (-1);
-	return (parse_tokens_and_assign(str, &(vec->x), &(vec->y), &(vec->z)));
+	p = str;
+	if (get_double(p, &vec->x, &p) < 0 || !*p || *p++ != ',')
+		return (-1);
+	if (get_double(p, &vec->y, &p) < 0 || !*p || *p++ != ',')
+		return (-1);
+	if (get_double(p, &vec->z, &p) < 0 || *p)
+		return (-1);
+	return (0);
 }
