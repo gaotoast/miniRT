@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 21:15:08 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/14 00:06:22 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/15 02:18:53 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 # define RENDER_H
 
 # include "ctx.h"
+
+# define TEXT_COLOR 0xFFFFFF
+# define MARGIN 10
+# define LINE_HEIGHT 20
 
 typedef struct s_camera_frame
 {
