@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 13:29:46 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/14 23:35:18 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/15 02:33:16 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static char	*check_camera_values(t_camera camera)
 {
-	if (!validate_vec3(camera.direction, -1.0, 1.0))
+	if (!validate_normalized_vec3(camera.direction))
 		return (ERR_MSG_ELEM_VALUE);
 	if (!validate_double_exclusive(camera.fov_deg, 0.0, 180.0))
 		return (ERR_MSG_ELEM_VALUE);

@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 21:03:20 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/14 23:36:59 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/15 02:37:41 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,12 @@ int	validate_colors(t_rgb color)
 	return (VALID);
 }
 
-int	validate_vec3(t_vec3 vec, double min, double max)
+int	validate_normalized_vec3(t_vec3 vec)
 {
-	if (vec.x < min || vec.x > max)
-		return (INVALID);
-	if (vec.y < min || vec.y > max)
-		return (INVALID);
-	if (vec.z < min || vec.z > max)
+	double	len_squared;
+
+	len_squared = vec3_dot(vec, vec);
+	if (fabs(len_squared - 1.0) > EPSILON)
 		return (INVALID);
 	return (VALID);
 }
