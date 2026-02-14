@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 13:29:46 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/13 22:57:38 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/14 21:44:44 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ static char	*check_camera_values(t_camera camera)
 	return (NULL);
 }
 
-static char	*check_camera_format(char **elems, t_camera *camera, int read_flags)
+static char	*validate_and_parse_camera(char **elems, t_camera *camera,
+		int read_flags)
 {
 	if (read_flags & FLAG_C)
 		return (ERR_MSG_DUP_IDENT);
@@ -43,7 +44,7 @@ int	parse_camera(char **elems, t_camera *camera, int *read_flags)
 {
 	char	*err_msg;
 
-	err_msg = check_camera_format(elems, camera, *read_flags);
+	err_msg = validate_and_parse_camera(elems, camera, *read_flags);
 	if (!err_msg)
 		err_msg = check_camera_values(*camera);
 	if (err_msg)

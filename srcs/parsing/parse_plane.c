@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 15:47:17 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/12 17:14:58 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/14 21:45:27 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static char	*check_plane_values(t_plane plane)
 	return (NULL);
 }
 
-static char	*check_plane_format(char **elems, t_plane *plane)
+static char	*validate_and_parse_plane(char **elems, t_plane *plane)
 {
 	if (count_array(elems) != 3)
 		return (ERR_MSG_ELEM_COUNT);
@@ -34,7 +34,7 @@ static char	*check_plane_format(char **elems, t_plane *plane)
 	return (NULL);
 }
 
-int	parse_plane(char **elems, t_obj**objects, int *read_flags)
+int	parse_plane(char **elems, t_obj **objects, int *read_flags)
 {
 	char	*err_msg;
 	t_plane	*plane;
@@ -42,7 +42,7 @@ int	parse_plane(char **elems, t_obj**objects, int *read_flags)
 	plane = (t_plane *)ft_calloc(1, sizeof(t_plane));
 	if (!plane)
 		return (-1);
-	err_msg = check_plane_format(elems, plane);
+	err_msg = validate_and_parse_plane(elems, plane);
 	if (!err_msg)
 		err_msg = check_plane_values(*plane);
 	if (err_msg)
