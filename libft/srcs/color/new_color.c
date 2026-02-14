@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   new_color.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kinamura <kinamura@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 16:40:18 by kinamura          #+#    #+#             */
-/*   Updated: 2025/12/29 17:23:26 by kinamura         ###   ########.fr       */
+/*   Updated: 2026/02/13 21:35:56 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_color	*new_color(t_color *new, int color)
+t_trgb	*new_color(t_trgb *new, int color)
 {
 	if (!new)
 	{

@@ -82,6 +82,7 @@ MATH_SRCS	=	$(MATH_DIR)/ft_abs.c \
 				$(MATH_DIR)/vec3.c \
 				$(MATH_DIR)/vec3_add.c \
 				$(MATH_DIR)/vec3_alloc.c \
+				$(MATH_DIR)/vec3_cross.c \
 				$(MATH_DIR)/vec3_dot.c \
 				$(MATH_DIR)/vec3_init.c \
 				$(MATH_DIR)/vec3_length.c \

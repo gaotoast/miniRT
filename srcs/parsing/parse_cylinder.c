@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 15:53:26 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/12 16:47:53 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/14 21:44:59 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static char	*check_cylinder_values(t_cylinder cylinder)
 	return (NULL);
 }
 
-static char	*check_cylinder_format(char **elems, t_cylinder *cylinder)
+static char	*validate_and_parse_cylinder(char **elems, t_cylinder *cylinder)
 {
 	if (count_array(elems) != 5)
 		return (ERR_MSG_ELEM_COUNT);
@@ -46,7 +46,7 @@ static char	*check_cylinder_format(char **elems, t_cylinder *cylinder)
 	return (NULL);
 }
 
-int	parse_cylinder(char **elems, t_object **objects, int *read_flags)
+int	parse_cylinder(char **elems, t_obj **objects, int *read_flags)
 {
 	char		*err_msg;
 	t_cylinder	*cylinder;
@@ -54,7 +54,7 @@ int	parse_cylinder(char **elems, t_object **objects, int *read_flags)
 	cylinder = (t_cylinder *)ft_calloc(1, sizeof(t_cylinder));
 	if (!cylinder)
 		return (-1);
-	err_msg = check_cylinder_format(elems, cylinder);
+	err_msg = validate_and_parse_cylinder(elems, cylinder);
 	if (!err_msg)
 		err_msg = check_cylinder_values(*cylinder);
 	if (err_msg)

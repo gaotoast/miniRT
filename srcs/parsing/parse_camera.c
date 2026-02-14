@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 13:29:46 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/12 16:47:52 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/14 23:35:18 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,13 @@ static char	*check_camera_values(t_camera camera)
 {
 	if (!validate_vec3(camera.direction, -1.0, 1.0))
 		return (ERR_MSG_ELEM_VALUE);
-	if (!validate_double(camera.fov, 0.0, 180.0))
+	if (!validate_double_exclusive(camera.fov_deg, 0.0, 180.0))
 		return (ERR_MSG_ELEM_VALUE);
 	return (NULL);
 }
 
-static char	*check_camera_format(char **elems, t_camera *camera, int read_flags)
+static char	*validate_and_parse_camera(char **elems, t_camera *camera,
+		int read_flags)
 {
 	if (read_flags & FLAG_C)
 		return (ERR_MSG_DUP_IDENT);
@@ -33,7 +34,7 @@ static char	*check_camera_format(char **elems, t_camera *camera, int read_flags)
 	if (!is_valid_csv(elems[1]) || parse_vec3(elems[1],
 			&(camera->direction)) < 0)
 		return (ERR_MSG_ELEM_FORMAT);
-	if (!is_valid_num(elems[2]) || get_double(elems[2], &(camera->fov),
+	if (!is_valid_num(elems[2]) || get_double(elems[2], &(camera->fov_deg),
 			NULL) < 0)
 		return (ERR_MSG_ELEM_FORMAT);
 	return (NULL);
@@ -43,7 +44,7 @@ int	parse_camera(char **elems, t_camera *camera, int *read_flags)
 {
 	char	*err_msg;
 
-	err_msg = check_camera_format(elems, camera, *read_flags);
+	err_msg = validate_and_parse_camera(elems, camera, *read_flags);
 	if (!err_msg)
 		err_msg = check_camera_values(*camera);
 	if (err_msg)

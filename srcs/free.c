@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 19:17:57 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/12 16:23:41 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/12 17:14:21 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	free_scene(t_scene *scene)
 {
-	t_object	*current;
-	t_object	*next;
+	t_obj	*current;
+	t_obj	*next;
 
 	if (scene)
 	{

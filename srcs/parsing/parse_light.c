@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 14:06:17 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/12 16:47:55 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/14 23:35:15 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 
 static char	*check_light_values(t_light light)
 {
-	if (!validate_double(light.brightness, 0.0, 1.0))
+	if (!validate_double_inclusive(light.brightness, 0.0, 1.0))
 		return (ERR_MSG_ELEM_VALUE);
 	if (!validate_colors(light.color))
 		return (ERR_MSG_ELEM_VALUE);
 	return (NULL);
 }
 
-static char	*check_light_format(char **elems, t_light *light, int read_flags)
+static char	*validate_and_parse_light(char **elems, t_light *light,
+		int read_flags)
 {
 	if (read_flags & FLAG_L)
 		return (ERR_MSG_DUP_IDENT);
@@ -41,7 +42,7 @@ int	parse_light(char **elems, t_light *light, int *read_flags)
 {
 	char	*err_msg;
 
-	err_msg = check_light_format(elems, light, *read_flags);
+	err_msg = validate_and_parse_light(elems, light, *read_flags);
 	if (!err_msg)
 		err_msg = check_light_values(*light);
 	if (err_msg)

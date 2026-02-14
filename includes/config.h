@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 21:44:50 by stakada           #+#    #+#             */
-/*   Updated: 2025/10/20 12:42:01 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/14 23:29:57 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # define WIN_WIDTH 1080
 # define WIN_HEIGHT 800
 # define EXT ".rt"
-# define PROGRAM "./miniRT"
-# define PI 3.14159265358979323846
+# define PROGRAM "miniRT"
+# define EXECUTION "./miniRT"
 # define EPSILON 1e-6
 
 # if defined(__APPLE__)
@@ -39,6 +39,7 @@
 #  define KEY_PLUS 24
 #  define KEY_MINUS 27
 #  define KEY_H 4
+#  define KEY_J 38
 # else
 #  include <X11/keysym.h>
 #  define ESC_KEY XK_Escape
@@ -59,6 +60,7 @@
 #  define KEY_PLUS XK_plus
 #  define KEY_MINUS XK_minus
 #  define KEY_H XK_h
+#  define KEY_J XK_j
 # endif
 
 # define MOVE_STEP 1.0
@@ -66,6 +68,8 @@
 # define SIZE_STEP 0.5
 # define FOV_STEP 5.0
 # define BRIGHT_STEP 0.1
+
+# define MIN_SIZE 0.1
 
 # define MOUSE_LEFT 1
 # define MOUSE_RIGHT 2

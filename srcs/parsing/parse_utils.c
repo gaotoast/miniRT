@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 13:13:12 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/13 20:41:50 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/13 21:32:00 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	get_double(const char *str, double *num, char **endptr)
 	return (0);
 }
 
-int	parse_colors(char *str, t_color *color)
+int	parse_colors(char *str, t_rgb *color)
 {
 	char	*p;
 

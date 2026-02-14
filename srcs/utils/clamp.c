@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   clamp.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/27 19:26:43 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/14 21:49:53 by stakada          ###   ########.fr       */
+/*   Created: 2026/02/10 15:49:01 by stakada           #+#    #+#             */
+/*   Updated: 2026/02/11 22:35:22 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-t_ctx	*init_ctx(char *filename)
+double	clamp01(double value)
 {
-	t_ctx	*ctx;
+	if (value < 0.0)
+		return (0.0);
+	if (value > 1.0)
+		return (1.0);
+	return (value);
+}
 
-	ctx = (t_ctx *)ft_calloc(1, sizeof(t_ctx));
-	if (!ctx)
-	{
-		print_error(ERR_MSG_MALLOC);
-		return (NULL);
-	}
-	ctx->scene = parse_scene(filename);
-	if (!ctx->scene)
-	{
-		free(ctx);
-		return (NULL);
-	}
-	ctx->edit_mode = MODE_CAMERA;
-	ctx->selected_object = ctx->scene->objects;
-	return (ctx);
+int	clamp_color(double value)
+{
+	if (value < 0.0)
+		return (0);
+	if (value > 255.0)
+		return (255);
+	return ((int)(value + 0.5));
 }

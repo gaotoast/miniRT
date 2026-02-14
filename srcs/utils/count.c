@@ -1,34 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   count.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/27 19:26:43 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/14 21:49:53 by stakada          ###   ########.fr       */
+/*   Created: 2025/08/27 20:45:18 by stakada           #+#    #+#             */
+/*   Updated: 2026/02/13 18:40:57 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-t_ctx	*init_ctx(char *filename)
+int	count_array(char **array)
 {
-	t_ctx	*ctx;
+	int	cnt;
 
-	ctx = (t_ctx *)ft_calloc(1, sizeof(t_ctx));
-	if (!ctx)
+	if (!array)
+		return (0);
+	cnt = 0;
+	while (array[cnt])
+		cnt++;
+	return (cnt);
+}
+
+int	count_objects(t_obj *objects)
+{
+	int		count;
+	t_obj	*obj;
+
+	count = 0;
+	obj = objects;
+	while (obj)
 	{
-		print_error(ERR_MSG_MALLOC);
-		return (NULL);
+		count++;
+		obj = obj->next;
 	}
-	ctx->scene = parse_scene(filename);
-	if (!ctx->scene)
-	{
-		free(ctx);
-		return (NULL);
-	}
-	ctx->edit_mode = MODE_CAMERA;
-	ctx->selected_object = ctx->scene->objects;
-	return (ctx);
+	return (count);
 }

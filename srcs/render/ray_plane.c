@@ -3,36 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   ray_plane.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kinamura <kinamura@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 01:32:18 by kinamura          #+#    #+#             */
-/*   Updated: 2025/12/30 14:35:40 by kinamura         ###   ########.fr       */
+/*   Updated: 2026/02/11 22:30:07 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-int	intersect_plane(t_vec3 origin, t_vec3 dir, t_plane *plane,
-			double *distance, t_vec3 *normal)
+double	find_plane_hit_t(t_ray ray, t_vec3 point, t_vec3 normal)
 {
-	t_vec3	n;
 	double	denom;
 	double	t;
 
-	if (!plane || !distance || !normal)
-		return (0);
-	/* 平面の法線と通過点を用いてレイと平面の交差を求める */
-	n = vec3_normalize(plane->normal);
-	denom = vec3_dot(dir, n);
+	denom = vec3_dot(ray.direction, normal);
 	if (fabs(denom) < EPSILON)
+		return (-1.0);
+	t = vec3_dot(vec3_sub(point, ray.origin), normal) / denom;
+	if (t <= EPSILON)
+		return (-1.0);
+	return (t);
+}
+
+int	calculate_plane_hit(t_ray ray, t_plane *pl, t_hit *hit)
+{
+	double	t;
+
+	if (!pl || !hit)
 		return (0);
-	t = vec3_dot(vec3_sub(plane->point, origin), n) / denom;
+	t = find_plane_hit_t(ray, pl->point, pl->normal);
 	if (t <= EPSILON)
 		return (0);
-	*distance = t;
-	if (denom > 0.0)
-		*normal = vec3_mul(n, -1.0);
-	else
-		*normal = n;
+	hit->distance = t;
+	hit->normal = front_normal(pl->normal, ray.direction);
 	return (1);
 }

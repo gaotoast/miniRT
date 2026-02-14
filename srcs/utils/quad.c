@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   count_array.c                                      :+:      :+:    :+:   */
+/*   quad.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kinamura <kinamura@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/27 20:45:18 by stakada           #+#    #+#             */
-/*   Updated: 2025/12/30 16:04:23 by kinamura         ###   ########.fr       */
+/*   Created: 2026/02/11 22:35:11 by stakada           #+#    #+#             */
+/*   Updated: 2026/02/11 22:35:25 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-int	count_array(char **array)
+void	quad_roots(t_quad *q, double *t0, double *t1)
 {
-	int	cnt;
+	double	sqrt_disc;
+	double	denom;
 
-	if (!array)
-		return (0);
-	cnt = 0;
-	while (array[cnt])
-		cnt++;
-	return (cnt);
+	sqrt_disc = sqrt(q->disc);
+	denom = 2.0 * q->a;
+	*t0 = (-q->b - sqrt_disc) / denom;
+	*t1 = (-q->b + sqrt_disc) / denom;
 }

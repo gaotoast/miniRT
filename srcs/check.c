@@ -6,13 +6,13 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 13:36:21 by stakada           #+#    #+#             */
-/*   Updated: 2025/08/24 16:23:31 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/14 21:49:00 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-int	is_valid_extension(const char *filename)
+static int	is_valid_extension(const char *filename)
 {
 	size_t	len;
 
@@ -26,7 +26,7 @@ int	is_valid_extension(const char *filename)
 	return (0);
 }
 
-int	is_accessible_file(const char *filename)
+static int	is_accessible_file(const char *filename)
 {
 	int	fd;
 
@@ -43,7 +43,7 @@ int	check_args(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		print_error(ERR_MSG_USAGE, PROGRAM);
+		print_error(ERR_MSG_USAGE, EXECUTION);
 		return (-1);
 	}
 	filename = argv[1];

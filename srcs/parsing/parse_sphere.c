@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 14:09:37 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/12 16:47:59 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/14 21:45:47 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static char	*check_sphere_values(t_sphere sphere)
 	return (NULL);
 }
 
-static char	*check_sphere_format(char **elems, t_sphere *sphere)
+static char	*validate_and_parse_sphere(char **elems, t_sphere *sphere)
 {
 	if (count_array(elems) != 3)
 		return (ERR_MSG_ELEM_COUNT);
@@ -35,7 +35,7 @@ static char	*check_sphere_format(char **elems, t_sphere *sphere)
 	return (NULL);
 }
 
-int	parse_sphere(char **elems, t_object **objects, int *read_flags)
+int	parse_sphere(char **elems, t_obj **objects, int *read_flags)
 {
 	char		*err_msg;
 	t_sphere	*sphere;
@@ -43,7 +43,7 @@ int	parse_sphere(char **elems, t_object **objects, int *read_flags)
 	sphere = (t_sphere *)ft_calloc(1, sizeof(t_sphere));
 	if (!sphere)
 		return (-1);
-	err_msg = check_sphere_format(elems, sphere);
+	err_msg = validate_and_parse_sphere(elems, sphere);
 	if (!err_msg)
 		err_msg = check_sphere_values(*sphere);
 	if (err_msg)
