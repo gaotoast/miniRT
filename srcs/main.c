@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 13:36:13 by stakada           #+#    #+#             */
-/*   Updated: 2025/10/20 12:39:10 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/15 03:25:48 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@ int	main(int argc, char **argv)
 	ctx = init_ctx(argv[1]);
 	if (!ctx)
 		return (1);
-	run_mlx(ctx);
+	if (run_mlx(ctx) < 0)
+	{
+		free_ctx(ctx);
+		return (1);
+	}
 	return (0);
 }
