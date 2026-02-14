@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 19:42:02 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/12 17:09:45 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/15 03:16:29 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,10 @@
 
 /* System/Runtime errors */
 # define ERR_MSG_MALLOC "Memory allocation failed"
+
+/* MiniLibX errors */
+# define ERR_MSG_MLX_INIT "Failed to initialize MiniLibX"
+# define ERR_MSG_MLX_WINDOW "Failed to create window"
+# define ERR_MSG_MLX_IMAGE "Failed to create image"
 
 #endif

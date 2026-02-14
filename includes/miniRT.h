@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 13:37:02 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/15 02:19:05 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/15 03:27:41 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_ctx	*init_ctx(char *filename);
 
 // mlx
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
-void	run_mlx(t_ctx *ctx);
+int		run_mlx(t_ctx *ctx);
 int		close_window(t_ctx *ctx);
 void	re_render(t_ctx *ctx);
 
