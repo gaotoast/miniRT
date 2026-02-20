@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 21:15:08 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/15 02:18:53 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/20 20:20:14 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,20 @@ typedef struct s_cy_ctx
 	double				half_h;
 }						t_cy_ctx;
 
+typedef struct s_cap_ctx
+{
+	t_vec3				center;
+	t_vec3				normal;
+	double				radius;
+}						t_cap_ctx;
+
+typedef struct s_color_channels
+{
+	double				obj_color;
+	double				ambient_color;
+	double				light_color;
+}						t_color_channels;
+
 // render
 void					render_scene(t_ctx *ctx);
 int						trace_ray(t_scene *scene, t_ray ray);
@@ -80,7 +94,6 @@ int						calculate_cylinder_hit(t_ray ray, t_cylinder *cy,
 double					find_plane_hit_t(t_ray ray, t_vec3 point,
 							t_vec3 normal);
 
-// shading
 int						background_color(t_ambient ambient);
 int						shade_color(t_ambient ambient, t_light light,
 							t_rgb object_color, double diffuse);
