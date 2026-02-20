@@ -66,11 +66,48 @@ BUILDDIR	:= objs
 LIBFT_DIR	:= libft
 
 #? Sources and Objects
-SOURCES		:= $(sort $(wildcard $(SRCDIR)/*.c))
-SOURCES		+= $(sort $(wildcard $(SRCDIR)/**/*.c))
-SOURCES		+= $(sort $(wildcard $(SRCDIR)/$(PLATFORM_DIR)/*.c))
+SOURCES		:= \
+	$(SRCDIR)/check.c \
+	$(SRCDIR)/error.c \
+	$(SRCDIR)/free.c \
+	$(SRCDIR)/init.c \
+	$(SRCDIR)/key_handler.c \
+	$(SRCDIR)/main.c \
+	$(SRCDIR)/mlx.c \
+	$(SRCDIR)/put_info.c \
+	$(SRCDIR)/debug/print_context.c \
+	$(SRCDIR)/debug/print_objects.c \
+	$(SRCDIR)/debug/print_scene.c \
+	$(SRCDIR)/debug/print_utils.c \
+	$(SRCDIR)/parsing/object_list.c \
+	$(SRCDIR)/parsing/parse.c \
+	$(SRCDIR)/parsing/parse_ambient.c \
+	$(SRCDIR)/parsing/parse_camera.c \
+	$(SRCDIR)/parsing/parse_cylinder.c \
+	$(SRCDIR)/parsing/parse_light.c \
+	$(SRCDIR)/parsing/parse_plane.c \
+	$(SRCDIR)/parsing/parse_sphere.c \
+	$(SRCDIR)/parsing/parse_utils.c \
+	$(SRCDIR)/parsing/validate_format.c \
+	$(SRCDIR)/parsing/validate_scene.c \
+	$(SRCDIR)/parsing/validate_values.c \
+	$(SRCDIR)/render/ray.c \
+	$(SRCDIR)/render/ray_cylinder.c \
+	$(SRCDIR)/render/ray_hit.c \
+	$(SRCDIR)/render/ray_plane.c \
+	$(SRCDIR)/render/ray_sphere.c \
+	$(SRCDIR)/render/render.c \
+	$(SRCDIR)/render/render_shading.c \
+	$(SRCDIR)/transform/resize.c \
+	$(SRCDIR)/transform/rotate.c \
+	$(SRCDIR)/transform/translate.c \
+	$(SRCDIR)/utils/clamp.c \
+	$(SRCDIR)/utils/count.c \
+	$(SRCDIR)/utils/ft_strtod.c \
+	$(SRCDIR)/utils/quad.c \
+	$(SRCDIR)/utils/vec3_utils.c
 
-BONUS_SOURCES	:= $(sort $(wildcard $(SRCDIR)/bonus/*.c))
+BONUS_SOURCES	:=
 
 OBJECTS		:= $(patsubst $(SRCDIR)/%.c,$(BUILDDIR)/%.o,$(SOURCES))
 BONUS_OBJECTS	:= $(patsubst $(SRCDIR)/bonus/%.c,$(BUILDDIR)/bonus/%.o,$(BONUS_SOURCES))
