@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 11:52:01 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/15 03:28:41 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/20 20:08:13 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,11 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-// TODO: Linux needs mlx_destroy_display() after mlx_destroy_window()
 int	close_window(t_ctx *ctx)
 {
 	mlx_destroy_image(ctx->mlx, ctx->img->img);
 	mlx_destroy_window(ctx->mlx, ctx->win);
-	// mlx_destroy_display();
+	mlx_destroy_display(ctx->mlx);
 	free_ctx(ctx);
 	exit(0);
 	return (0);
