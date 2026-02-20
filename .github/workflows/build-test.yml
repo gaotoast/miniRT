@@ -20,9 +20,6 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y libx11-dev libxext-dev zlib1g-dev valgrind xvfb
 
-      - name: Clone minilibx-linux
-        run: git clone https://github.com/42Paris/minilibx-linux.git
-
       - name: Build project
         run: make all
 
