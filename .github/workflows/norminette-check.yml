@@ -5,7 +5,8 @@ on:
   workflow_dispatch:
   pull_request:
     branches:
-      - norminette
+      - main
+      - develop
 
 jobs:
   norminette:
