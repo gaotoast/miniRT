@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 13:37:02 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/15 03:27:41 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/20 20:24:50 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 # include "mlx.h"
 # include "parsing.h"
 # include "render.h"
-# include <float.h>
 # include <math.h>
 # include <stdlib.h>
 

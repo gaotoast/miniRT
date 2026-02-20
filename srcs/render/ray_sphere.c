@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 01:32:11 by kinamura          #+#    #+#             */
-/*   Updated: 2026/02/11 21:53:17 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/20 20:17:26 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@ static double	find_sphere_hit_t(t_ray ray, t_sp_ctx *c)
 {
 	t_quad	q;
 	t_vec3	oc;
-	double	t0;
-	double	t1;
+	double	roots[2];
 
 	oc = vec3_sub(ray.origin, c->sp->center);
 	q.a = vec3_dot(ray.direction, ray.direction);
@@ -26,11 +25,11 @@ static double	find_sphere_hit_t(t_ray ray, t_sp_ctx *c)
 	q.disc = q.b * q.b - 4.0 * q.a * q.c;
 	if (q.disc < 0.0)
 		return (-1.0);
-	quad_roots(&q, &t0, &t1);
-	if (t0 > EPSILON)
-		return (t0);
-	if (t1 > EPSILON)
-		return (t1);
+	quad_roots(&q, &roots[0], &roots[1]);
+	if (roots[0] > EPSILON)
+		return (roots[0]);
+	if (roots[1] > EPSILON)
+		return (roots[1]);
 	return (-1.0);
 }
 

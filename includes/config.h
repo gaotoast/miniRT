@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 21:44:50 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/14 23:29:57 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/20 20:25:07 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # define PROGRAM "miniRT"
 # define EXECUTION "./miniRT"
 # define EPSILON 1e-6
+# define DBL_MAX __DBL_MAX__
 
 # if defined(__APPLE__)
 #  define ESC_KEY 53
