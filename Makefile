@@ -73,7 +73,7 @@ SOURCES		:= \
 	$(SRCDIR)/init.c \
 	$(SRCDIR)/key_handler.c \
 	$(SRCDIR)/main.c \
-	$(SRCDIR)/mlx.c \
+	$(SRCDIR)/$(PLATFORM_DIR)/mlx.c \
 	$(SRCDIR)/put_info.c \
 	$(SRCDIR)/debug/print_context.c \
 	$(SRCDIR)/debug/print_objects.c \
