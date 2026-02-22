@@ -75,10 +75,6 @@ SOURCES		:= \
 	$(SRCDIR)/main.c \
 	$(SRCDIR)/$(PLATFORM_DIR)/mlx.c \
 	$(SRCDIR)/put_info.c \
-	$(SRCDIR)/debug/print_context.c \
-	$(SRCDIR)/debug/print_objects.c \
-	$(SRCDIR)/debug/print_scene.c \
-	$(SRCDIR)/debug/print_utils.c \
 	$(SRCDIR)/parsing/object_list.c \
 	$(SRCDIR)/parsing/parse.c \
 	$(SRCDIR)/parsing/parse_ambient.c \
