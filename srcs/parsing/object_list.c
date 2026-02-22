@@ -19,7 +19,7 @@ t_obj	*create_object_node(t_obj_type type, void *obj)
 	node = (t_obj *)malloc(sizeof(t_obj));
 	if (!node)
 	{
-		perror("");
+		print_error(ERR_MSG_MALLOC);
 		return (NULL);
 	}
 	node->type = type;

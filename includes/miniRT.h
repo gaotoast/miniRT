@@ -60,7 +60,7 @@ int		clamp_color(double value);
 void	print_error(char *msg, ...);
 
 // free
-void	free_scene(t_scene *scene);
+void	free_scene(t_scene **scene);
 void	free_ctx(t_ctx *ctx);
 
 #endif

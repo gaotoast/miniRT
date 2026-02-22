@@ -110,12 +110,12 @@ t_scene	*parse_scene(char *filename)
 	read_flags = 0;
 	if (parse_file(filename, scene, &read_flags) < 0)
 	{
-		free_scene(scene);
+		free_scene(&scene);
 		return (NULL);
 	}
 	if (!validate_scene(read_flags))
 	{
-		free_scene(scene);
+		free_scene(&scene);
 		return (NULL);
 	}
 	return (scene);
