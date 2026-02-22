@@ -6,34 +6,25 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 13:36:13 by stakada           #+#    #+#             */
-/*   Updated: 2025/08/22 13:49:42 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/15 03:25:48 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = img->addr + (y * img->line_length + x * (img->bpp / 8));
-	*(unsigned int *)dst = color;
-}
-
 int	main(int argc, char **argv)
 {
-	void	*mlx;
-	void	*mlx_win;
-	t_img	img;
+	t_ctx	*ctx;
 
 	if (check_args(argc, argv) < 0)
 		return (1);
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, WIN_WIDTH, WIN_HEIGHT, "Hello world!");
-	img.img = mlx_new_image(mlx, WIN_WIDTH, WIN_HEIGHT);
-	img.addr = mlx_get_data_addr(img.img, &img.bpp, &img.line_length,
-			&img.endian);
-	my_mlx_pixel_put(&img, 5, 5, 0x00FF0000);
-	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
-	mlx_loop(mlx);
+	ctx = init_ctx(argv[1]);
+	if (!ctx)
+		return (1);
+	if (run_mlx(ctx) < 0)
+	{
+		free_ctx(ctx);
+		return (1);
+	}
+	return (0);
 }

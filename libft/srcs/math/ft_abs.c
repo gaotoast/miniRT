@@ -6,11 +6,11 @@
 /*   By: kinamura <kinamura@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 12:05:29 by kinamura          #+#    #+#             */
-/*   Updated: 2025/07/20 03:08:27 by kinamura         ###   ########.fr       */
+/*   Updated: 2025/12/27 17:49:55 by kinamura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_math.h"
 
 int	ft_abs(int i)
 {

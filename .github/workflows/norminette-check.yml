@@ -1,10 +1,12 @@
 name: Norminette Check
 run-name: Norminette check for ${{ github.event.pull_request.head.ref }}
 
-on: 
+on:
+  workflow_dispatch:
   pull_request:
     branches:
       - main
+      - develop
 
 jobs:
   norminette:
