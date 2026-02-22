@@ -30,7 +30,8 @@ ARCH		?= $(shell uname -m || echo unknown)
 ifeq ($(shell uname -s),Darwin)
 	PLATFORM		:= macOS
 	PLATFORM_DIR	:= mac
-	THREADS			:= $(shell sysctl -n hw.ncpu || echo 1)
+	THREADS			:= 1
+# 	THREADS			:= $(shell sysctl -n hw.ncpu || echo 1)
 	OS_LIBFT		:= libft/mac
 	MLX_DIR			:= $(MLX)_macos
 	MLX_A			:= $(MLX_DIR)/libmlx.a
@@ -38,7 +39,8 @@ ifeq ($(shell uname -s),Darwin)
 else
 	PLATFORM		:= $(shell uname -s || echo unknown)
 	PLATFORM_DIR	:= linux
-	THREADS			:= $(shell getconf _NPROCESSORS_ONLN 2>/dev/null || echo 1)
+	THREADS			:= 1
+# 	THREADS			:= $(shell getconf _NPROCESSORS_ONLN 2>/dev/null || echo 1)
 	OS_LIBFT		:= libft/linux
 	MLX_DIR			:= $(MLX)-linux
 	MLX_A			:= $(MLX_DIR)/libmlx_Linux.a
