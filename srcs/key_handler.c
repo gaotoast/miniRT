@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 20:00:00 by kinamura          #+#    #+#             */
-/*   Updated: 2026/02/15 03:13:07 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/23 10:43:59 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,12 @@ static int	get_rotate_params(int keycode, t_vec3 *axis, double *angle)
 
 static int	get_adjust_params(int keycode, int *sign, int *height_mode)
 {
-	if (keycode == KEY_PLUS)
+	if (keycode == KEY_P)
 	{
 		*sign = 1;
 		*height_mode = 0;
 	}
-	else if (keycode == KEY_MINUS)
+	else if (keycode == KEY_M)
 	{
 		*sign = -1;
 		*height_mode = 0;
