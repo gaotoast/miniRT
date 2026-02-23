@@ -102,14 +102,6 @@ pl <x,y,z> <nx,ny,nz> <R,G,B>
 cy <x,y,z> <nx,ny,nz> <diameter> <height> <R,G,B>
 ```
 
-### Example Scene Files
-
-Sample scene files are provided in the `scenes/` directory:
-
-- `scenes/valid/example.rt`: Basic example scene
-- `scenes/valid/*`: Other valid scene files
-- `scenes/error/*`: Invalid scene files for testing error handling
-
 ### Controls
 
 - **ESC**: Close window and exit program
