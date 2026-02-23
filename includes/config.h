@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 21:44:50 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/20 20:25:07 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/23 10:48:44 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # define PROGRAM "miniRT"
 # define EXECUTION "./miniRT"
 # define EPSILON 1e-6
+# define NORM_EPSILON 1e-3
 # define DBL_MAX __DBL_MAX__
 
 # if defined(__APPLE__)
@@ -39,6 +40,8 @@
 #  define KEY_RIGHT 124
 #  define KEY_PLUS 24
 #  define KEY_MINUS 27
+#  define KEY_P 35
+#  define KEY_M 46
 #  define KEY_H 4
 #  define KEY_J 38
 # else
@@ -60,6 +63,8 @@
 #  define KEY_RIGHT XK_Right
 #  define KEY_PLUS XK_plus
 #  define KEY_MINUS XK_minus
+#  define KEY_P XK_p
+#  define KEY_M XK_m
 #  define KEY_H XK_h
 #  define KEY_J XK_j
 # endif
@@ -76,13 +81,6 @@
 # define MOUSE_RIGHT 2
 # define MOUSE_SCROLL_UP 4
 # define MOUSE_SCROLL_DOWN 5
-
-# if defined(__APPLE__)
-#  define ESC_KEY 53
-# else
-#  include <X11/keysym.h>
-#  define ESC_KEY XK_Escape
-# endif
 
 # define VALID 1
 # define INVALID 0

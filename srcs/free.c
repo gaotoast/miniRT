@@ -12,27 +12,26 @@
 
 #include "miniRT.h"
 
-void	free_scene(t_scene *scene)
+void	free_scene(t_scene **scene)
 {
 	t_obj	*current;
 	t_obj	*next;
 
-	if (scene)
+	if (!scene || !*scene)
+		return ;
+	if ((*scene)->objects)
 	{
-		if (scene->objects)
+		current = (*scene)->objects;
+		while (current)
 		{
-			current = scene->objects;
-			while (current)
-			{
-				next = current->next;
-				free(current->obj_data);
-				free(current);
-				current = next;
-			}
+			next = current->next;
+			free(current->obj_data);
+			free(current);
+			current = next;
 		}
-		free(scene);
 	}
-	scene = NULL;
+	free(*scene);
+	*scene = NULL;
 }
 
 void	free_ctx(t_ctx *ctx)
@@ -42,6 +41,6 @@ void	free_ctx(t_ctx *ctx)
 	if (ctx->img)
 		free(ctx->img);
 	if (ctx->scene)
-		free_scene(ctx->scene);
+		free_scene(&ctx->scene);
 	free(ctx);
 }

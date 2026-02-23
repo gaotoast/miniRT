@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/15 00:30:30 by stakada           #+#    #+#             */
-/*   Updated: 2026/02/15 02:18:32 by stakada          ###   ########.fr       */
+/*   Updated: 2026/02/23 10:44:25 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	put_camera_info(t_ctx *ctx)
 	mlx_string_put(ctx->mlx, ctx->win, MARGIN, LINE_HEIGHT * 6, TEXT_COLOR,
 		" Rotate: Arrow keys");
 	mlx_string_put(ctx->mlx, ctx->win, MARGIN, LINE_HEIGHT * 7, TEXT_COLOR,
-		" FOV: + (Increase), - (Decrease)");
+		" FOV: P (Increase), M (Decrease)");
 }
 
 static void	put_light_info(t_ctx *ctx)
@@ -46,7 +46,7 @@ static void	put_light_info(t_ctx *ctx)
 	mlx_string_put(ctx->mlx, ctx->win, MARGIN, LINE_HEIGHT * 5, TEXT_COLOR,
 		" Move: W, A, S, D, Q, E");
 	mlx_string_put(ctx->mlx, ctx->win, MARGIN, LINE_HEIGHT * 6, TEXT_COLOR,
-		" Brightness: + (Increase), - (Decrease)");
+		" Brightness: P (Increase), M (Decrease)");
 }
 
 static void	put_object_info(t_ctx *ctx)
@@ -72,7 +72,7 @@ static void	put_object_info(t_ctx *ctx)
 	if (ctx->selected_object->type == SPHERE
 		|| ctx->selected_object->type == CYLINDER)
 		mlx_string_put(ctx->mlx, ctx->win, MARGIN, LINE_HEIGHT * line++,
-			TEXT_COLOR, " Diameter: + (Increase), - (Decrease)");
+			TEXT_COLOR, " Diameter: P (Increase), M (Decrease)");
 	if (ctx->selected_object->type == CYLINDER)
 		mlx_string_put(ctx->mlx, ctx->win, MARGIN, LINE_HEIGHT * line++,
 			TEXT_COLOR, " Height: H (Increase), J (Decrease)");

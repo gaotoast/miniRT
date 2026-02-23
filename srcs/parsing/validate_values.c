@@ -42,7 +42,7 @@ int	validate_normalized_vec3(t_vec3 vec)
 	double	len_squared;
 
 	len_squared = vec3_dot(vec, vec);
-	if (fabs(len_squared - 1.0) > EPSILON)
+	if (fabs(len_squared - 1.0) > NORM_EPSILON)
 		return (INVALID);
 	return (VALID);
 }
