@@ -63,5 +63,12 @@ dkms.conf
 .vscode
 *.code-workspace
 
+# AI agents
+CLAUDE.md
+.claude/
+.cursor/
+.aider*
+.copilot/
+
 # others
 .progress_count
